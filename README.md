@@ -1,4 +1,4 @@
-musicexplorer.studio
+neurotune.app
 
 ## Azure Storage CORS Configuration
 
