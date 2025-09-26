@@ -23,7 +23,8 @@ import {
   CheckCircle,
   Zap
 } from 'lucide-react';
-import { azureStorageService, ALLOWED_EXTENSIONS } from '../services/azureStorage';
+import { getStorageService } from '../services/storageFactory';
+import { ALLOWED_EXTENSIONS } from '../services/azureStorage';
 import { useAudioAnalysis } from '../hooks/useAudioAnalysis';
 import AnalysisDialog from './AnalysisDialog';
 
@@ -91,6 +92,9 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
     energy: '',
     isCompleted: false
   });
+  
+  // Get storage service instance
+  const storageService = getStorageService();
   
   const analyzeUploadedTrack = async (track: Track) => {
     if (!track.azureFileName || !track.azureFileUrl) {
@@ -163,7 +167,7 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
     const invalidFiles: string[] = [];
     
     Array.from(files).forEach(file => {
-      const validation = azureStorageService.validateAudioFile(file);
+      const validation = storageService.validateAudioFile(file);
       if (validation.isValid) {
         audioFiles.push(file);
       } else {
@@ -256,8 +260,8 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
       setTracks([...updatedTracks]);
       
       try {
-        // Upload file to Azure
-        const uploadResult = await azureStorageService.uploadFile(track.file);
+        // Upload file using configured storage service
+        const uploadResult = await storageService.uploadFile(track.file);
         
         if (uploadResult.success) {
           updatedTracks[i] = {

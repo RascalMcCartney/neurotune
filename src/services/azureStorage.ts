@@ -1,5 +1,6 @@
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob';
 import { v4 as uuidv4 } from 'uuid';
+import { FileValidationResult, UploadResult, StorageService } from '../types/storage';
 
 // Allowed audio file types
 const ALLOWED_AUDIO_TYPES = {
@@ -13,37 +14,19 @@ const ALLOWED_AUDIO_TYPES = {
 
 export const ALLOWED_EXTENSIONS = ['.mp3', '.wav', '.flac', '.aac', '.ogg', '.m4a'];
 
-interface FileValidationResult {
-  isValid: boolean;
-  error?: string;
-  fileType?: string;
-}
-
-interface UploadResult {
-  success: boolean;
-  fileName?: string;
-  fileUrl?: string;
-  error?: string;
-}
-
-class AzureStorageService {
+export class AzureStorageService implements StorageService {
   private containerClient: ContainerClient | null = null;
   private accountName: string;
   private containerName: string;
   private sasToken: string;
 
-  constructor() {
-    // Get configuration from environment variables
-    this.accountName = import.meta.env.VITE_AZURE_STORAGE_ACCOUNT || 'neurotunetrackstorage';
-    this.containerName = import.meta.env.VITE_AZURE_CONTAINER_NAME || 'songs';
-    this.sasToken = import.meta.env.VITE_AZURE_SAS_TOKEN || 'sp=racwdli&st=2025-09-26T12:04:45Z&se=2030-09-26T20:19:45Z&sip=82.132.216.101&spr=https&sv=2024-11-04&sr=c&sig=dNPZ%2BOACTko9f3l06DmAaDXN0mcg1tR7h5gkfBXgR54%3D';
+  constructor(accountName?: string, containerName?: string, sasToken?: string) {
+    // Use provided parameters or fall back to environment variables
+    this.accountName = accountName || import.meta.env.VITE_AZURE_STORAGE_ACCOUNT || 'neurotunetrackstorage';
+    this.containerName = containerName || import.meta.env.VITE_AZURE_CONTAINER_NAME || 'songs';
+    this.sasToken = sasToken || import.meta.env.VITE_AZURE_SAS_TOKEN || 'sp=racwdli&st=2025-09-26T12:04:45Z&se=2030-09-26T20:19:45Z&sip=82.132.216.101&spr=https&sv=2024-11-04&sr=c&sig=dNPZ%2BOACTko9f3l06DmAaDXN0mcg1tR7h5gkfBXgR54%3D';
 
-    if (this.accountName && this.containerName && this.sasToken) {
-      this.initializeClient();
-    } else {
-      console.warn('Azure Storage configuration missing. Using fallback credentials.');
-      this.initializeClient();
-    }
+    this.initializeClient();
   }
 
   /**
@@ -247,13 +230,20 @@ class AzureStorageService {
   }
 
   /**
-   * Gets a file URL with SAS token for downloading/playing
+   * Gets a file URL for downloading/playing (implements StorageService interface)
    */
-  getFileUrlWithSas(fileName: string): string {
+  getFileUrl(fileName: string): string {
     if (!this.accountName || !this.containerName || !this.sasToken) {
       return '';
     }
     return `https://${this.accountName}.blob.core.windows.net/${this.containerName}/${fileName}?${this.sasToken}`;
+  }
+
+  /**
+   * Gets a file URL with SAS token for downloading/playing (legacy method)
+   */
+  getFileUrlWithSas(fileName: string): string {
+    return this.getFileUrl(fileName);
   }
 
   /**
@@ -263,6 +253,3 @@ class AzureStorageService {
     return !!(this.containerClient && this.accountName && this.containerName && this.sasToken);
   }
 }
-
-// Export singleton instance
-export const azureStorageService = new AzureStorageService();
