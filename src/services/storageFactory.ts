@@ -2,7 +2,7 @@ import { StorageService } from '../types/storage';
 import { AzureStorageService } from './azureStorage';
 import { FilesystemStorageService } from './filesystemStorage';
 import { storageConfig } from '../config/storage';
-import { logInfo, logWarn, logError } from './logger';
+import { logInfo, logWarn, logError, logDebug } from './logger';
 
 class StorageFactory {
   private static instance: StorageService | null = null;
