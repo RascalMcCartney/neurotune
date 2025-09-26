@@ -34,14 +34,15 @@ class AzureStorageService {
 
   constructor() {
     // Get configuration from environment variables
-    this.accountName = import.meta.env.VITE_AZURE_STORAGE_ACCOUNT || '';
-    this.containerName = import.meta.env.VITE_AZURE_CONTAINER_NAME || '';
-    this.sasToken = import.meta.env.VITE_AZURE_SAS_TOKEN || '';
+    this.accountName = import.meta.env.VITE_AZURE_STORAGE_ACCOUNT || 'neurotunetrackstorage';
+    this.containerName = import.meta.env.VITE_AZURE_CONTAINER_NAME || 'songs';
+    this.sasToken = import.meta.env.VITE_AZURE_SAS_TOKEN || 'sp=racwdli&st=2025-09-26T12:04:45Z&se=2030-09-26T20:19:45Z&sip=82.132.216.101&spr=https&sv=2024-11-04&sr=c&sig=dNPZ%2BOACTko9f3l06DmAaDXN0mcg1tR7h5gkfBXgR54%3D';
 
     if (this.accountName && this.containerName && this.sasToken) {
       this.initializeClient();
     } else {
-      console.warn('Azure Storage configuration missing. Upload operations will fail.');
+      console.warn('Azure Storage configuration missing. Using fallback credentials.');
+      this.initializeClient();
     }
   }
 
