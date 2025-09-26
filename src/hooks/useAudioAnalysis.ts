@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { audioAnalysisService, AudioAnalysisResult } from '../services/audioAnalysis';
+import { logInfo, logError, logWarn } from '../services/logger';
 
 interface UseAudioAnalysisReturn {
   isAnalyzing: boolean;
@@ -26,6 +27,11 @@ export const useAudioAnalysis = (): UseAudioAnalysisReturn => {
       includeAI?: boolean;
     } = {}
   ): Promise<AudioAnalysisResult> => {
+    logInfo('Track analysis requested via hook', {
+      azureFileName: azureFileName,
+      options: options
+    }, 'AudioAnalysisHook');
+    
     setIsAnalyzing(true);
     setError(null);
 
@@ -39,12 +45,25 @@ export const useAudioAnalysis = (): UseAudioAnalysisReturn => {
       setLastAnalysisResult(result);
       
       if (!result.success) {
+        logWarn('Audio analysis completed with errors', {
+          azureFileName: azureFileName,
+          error: result.error
+        }, 'AudioAnalysisHook');
         setError(result.error || 'Analysis failed');
+      } else {
+        logInfo('Audio analysis completed successfully', {
+          azureFileName: azureFileName,
+          processingTime: result.processingTime
+        }, 'AudioAnalysisHook');
       }
 
       return result;
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
+      logError('Audio analysis hook error', {
+        azureFileName: azureFileName,
+        error: errorMessage
+      }, 'AudioAnalysisHook');
       setError(errorMessage);
       
       const failureResult: AudioAnalysisResult = {
@@ -60,10 +79,12 @@ export const useAudioAnalysis = (): UseAudioAnalysisReturn => {
   }, []);
 
   const checkEnvironment = useCallback(async () => {
+    logInfo('Environment check requested via hook', {}, 'AudioAnalysisHook');
     return await audioAnalysisService.checkEnvironment();
   }, []);
 
   const clearError = useCallback(() => {
+    logDebug('Clearing analysis error', {}, 'AudioAnalysisHook');
     setError(null);
   }, []);
 

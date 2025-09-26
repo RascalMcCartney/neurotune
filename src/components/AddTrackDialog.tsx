@@ -27,6 +27,7 @@ import { getStorageService } from '../services/storageFactory';
 import { ALLOWED_EXTENSIONS } from '../services/azureStorage';
 import { useAudioAnalysis } from '../hooks/useAudioAnalysis';
 import AnalysisDialog from './AnalysisDialog';
+import { logInfo, logError, logWarn, logDebug } from '../services/logger';
 
 interface Track {
   id: string;
@@ -98,9 +99,20 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
   
   const analyzeUploadedTrack = async (track: Track) => {
     if (!track.azureFileName || !track.azureFileUrl) {
-      console.warn('Cannot analyze track: missing Azure file information');
+      logWarn('Cannot analyze track: missing Azure file information', {
+        trackId: track.id,
+        trackName: track.name,
+        hasAzureFileName: !!track.azureFileName,
+        hasAzureFileUrl: !!track.azureFileUrl
+      }, 'AddTrackDialog');
       return;
     }
+    
+    logInfo('Starting track analysis', {
+      trackId: track.id,
+      trackName: track.name,
+      azureFileName: track.azureFileName
+    }, 'AddTrackDialog');
     
     // Update track analysis status
     setTracks(prevTracks => 
@@ -112,11 +124,17 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
     );
     
     try {
-      console.log(`Starting analysis for track: ${track.name}`);
       const analysisResult = await analyzeTrack(track.azureFileName, track.azureFileUrl, {
         detailed: true,
         includeAI: false // Set to true if you want AI-powered insights
       });
+      
+      logInfo('Track analysis completed', {
+        trackId: track.id,
+        trackName: track.name,
+        success: analysisResult.success,
+        processingTime: analysisResult.processingTime
+      }, 'AddTrackDialog');
       
       // Update track with analysis results
       setTracks(prevTracks => 
@@ -134,6 +152,11 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
       // Auto-fill some fields from analysis if available
       if (analysisResult.success && analysisResult.analysis) {
         const analysis = analysisResult.analysis;
+        logDebug('Auto-filling track metadata from analysis', {
+          trackId: track.id,
+          detectedKey: analysis.harmonic_content?.key
+        }, 'AddTrackDialog');
+        
         setTracks(prevTracks => 
           prevTracks.map(t => 
             t.id === track.id 
@@ -147,9 +170,13 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
         );
       }
       
-      console.log(`Analysis completed for track: ${track.name}`, analysisResult.success ? 'successfully' : 'with errors');
     } catch (error) {
-      console.error(`Analysis failed for track: ${track.name}`, error);
+      logError('Track analysis failed with exception', {
+        trackId: track.id,
+        trackName: track.name,
+        error: error instanceof Error ? error.message : String(error)
+      }, 'AddTrackDialog');
+      
       setTracks(prevTracks => 
         prevTracks.map(t => 
           t.id === track.id 
@@ -163,6 +190,11 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
   const handleFileSelect = (files: FileList | null) => {
     if (!files) return;
     
+    logInfo('Files selected for upload', {
+      fileCount: files.length,
+      mode: mode
+    }, 'AddTrackDialog');
+    
     const audioFiles: File[] = [];
     const invalidFiles: string[] = [];
     
@@ -175,12 +207,24 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
       }
     });
     
+    logInfo('File validation completed', {
+      totalFiles: files.length,
+      validFiles: audioFiles.length,
+      invalidFiles: invalidFiles.length,
+      invalidFileDetails: invalidFiles
+    }, 'AddTrackDialog');
+    
     if (invalidFiles.length > 0) {
+      logWarn('Some files failed validation', { invalidFiles }, 'AddTrackDialog');
       alert(`Invalid files found:\n\n${invalidFiles.join('\n')}\n\nSupported formats: ${ALLOWED_EXTENSIONS.join(', ')}`);
     }
     
     if (audioFiles.length > 0) {
       const newTracks = audioFiles.map(createTrackFromFile);
+      logInfo('Adding tracks to dialog', {
+        newTrackCount: newTracks.length,
+        trackNames: newTracks.map(t => t.name)
+      }, 'AddTrackDialog');
       setTracks(prevTracks => [...prevTracks, ...newTracks]);
       if (tracks.length === 0) {
         setSelectedTrackIndex(0);
@@ -247,13 +291,31 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
   };
 
   const uploadTrackFiles = async (tracksToUpload: Track[]): Promise<Track[]> => {
+    logInfo('Starting batch upload process', {
+      trackCount: tracksToUpload.length,
+      trackNames: tracksToUpload.map(t => t.name)
+    }, 'AddTrackDialog');
+    
     const updatedTracks = [...tracksToUpload];
     
     for (let i = 0; i < updatedTracks.length; i++) {
       const track = updatedTracks[i];
       
       // Skip if already uploaded
-      if (track.uploadStatus === 'success') continue;
+      if (track.uploadStatus === 'success') {
+        logDebug('Skipping already uploaded track', {
+          trackId: track.id,
+          trackName: track.name
+        }, 'AddTrackDialog');
+        continue;
+      }
+      
+      logInfo('Uploading track file', {
+        trackId: track.id,
+        trackName: track.name,
+        fileName: track.file.name,
+        fileSize: track.file.size
+      }, 'AddTrackDialog');
       
       // Update status to uploading
       updatedTracks[i] = { ...track, uploadStatus: 'uploading' };
@@ -264,6 +326,13 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
         const uploadResult = await storageService.uploadFile(track.file);
         
         if (uploadResult.success) {
+          logInfo('Track file uploaded successfully', {
+            trackId: track.id,
+            trackName: track.name,
+            azureFileName: uploadResult.fileName,
+            azureFileUrl: uploadResult.fileUrl
+          }, 'AddTrackDialog');
+          
           updatedTracks[i] = {
             ...track,
             uploadStatus: 'success',
@@ -272,6 +341,12 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
             uploadError: undefined
           };
         } else {
+          logError('Track file upload failed', {
+            trackId: track.id,
+            trackName: track.name,
+            error: uploadResult.error
+          }, 'AddTrackDialog');
+          
           updatedTracks[i] = {
             ...track,
             uploadStatus: 'error',
@@ -279,6 +354,12 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
           };
         }
       } catch (error) {
+        logError('Track file upload exception', {
+          trackId: track.id,
+          trackName: track.name,
+          error: error instanceof Error ? error.message : String(error)
+        }, 'AddTrackDialog');
+        
         updatedTracks[i] = {
           ...track,
           uploadStatus: 'error',
@@ -289,11 +370,25 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
       setTracks([...updatedTracks]);
     }
     
+    const successfulUploads = updatedTracks.filter(t => t.uploadStatus === 'success').length;
+    const failedUploads = updatedTracks.filter(t => t.uploadStatus === 'error').length;
+    
+    logInfo('Batch upload process completed', {
+      totalTracks: updatedTracks.length,
+      successful: successfulUploads,
+      failed: failedUploads
+    }, 'AddTrackDialog');
+    
     return updatedTracks;
   };
 
   const handleSave = async () => {
     if (tracks.length === 0) return;
+    
+    logInfo('Starting save process', {
+      trackCount: tracks.length,
+      completedTracks: tracks.filter(t => t.isCompleted).length
+    }, 'AddTrackDialog');
     
     setIsProcessing(true);
     
@@ -305,6 +400,11 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
       const failedUploads = uploadedTracks.filter(track => track.uploadStatus === 'error');
       
       if (failedUploads.length > 0) {
+        logError('Some track uploads failed', {
+          failedCount: failedUploads.length,
+          failedTracks: failedUploads.map(t => ({ name: t.name, error: t.uploadError }))
+        }, 'AddTrackDialog');
+        
         const errorMessage = `Failed to upload ${failedUploads.length} file(s):\n\n${
           failedUploads.map(track => `${track.name}: ${track.uploadError}`).join('\n')
         }`;
@@ -312,6 +412,10 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
         setIsProcessing(false);
         return;
       }
+      
+      logInfo('All tracks uploaded successfully', {
+        trackCount: uploadedTracks.length
+      }, 'AddTrackDialog');
       
       // All uploads successful, return the tracks
       onTracksAdded(uploadedTracks);
@@ -327,7 +431,10 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
       onClose();
       
     } catch (error) {
-      console.error('Error saving tracks:', error);
+      logError('Error in save process', {
+        error: error instanceof Error ? error.message : String(error),
+        trackCount: tracks.length
+      }, 'AddTrackDialog');
       alert('An unexpected error occurred while saving tracks');
       setIsProcessing(false);
     }

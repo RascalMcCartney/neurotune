@@ -1,5 +1,6 @@
 // Browser compatibility check
 const isServerSide = typeof window === 'undefined';
+import { logInfo, logWarn, logError, logDebug } from './logger';
 
 // Conditional imports for Node.js modules
 let spawn: any;
@@ -13,7 +14,7 @@ if (isServerSide) {
     path = require('path');
     fs = require('fs');
   } catch (error) {
-    console.warn('Failed to load Node.js modules:', error);
+    logWarn('Failed to load Node.js modules for audio analysis', { error }, 'AudioAnalysis');
   }
 }
 
@@ -77,9 +78,15 @@ class AudioAnalysisService {
       // Configure Python path - adjust as needed for your environment
       this.pythonPath = process.env.PYTHON_PATH || 'python3';
       this.scriptPath = path.join(process.cwd(), 'src', 'audioProcessor', 'core', 'audio_analyzer.py');
+      
+      logInfo('Audio Analysis Service initialized', {
+        pythonPath: this.pythonPath,
+        scriptPath: this.scriptPath
+      }, 'AudioAnalysis');
     } else {
       this.pythonPath = '';
       this.scriptPath = '';
+      logWarn('Audio Analysis Service initialized in browser mode - limited functionality', {}, 'AudioAnalysis');
     }
   }
 
@@ -94,8 +101,14 @@ class AudioAnalysisService {
     includeAI?: boolean;
     outputPath?: string;
   } = {}): Promise<AudioAnalysisResult> {
+    logInfo('Starting audio analysis', {
+      filePath: filePath,
+      options: options
+    }, 'AudioAnalysis');
+    
     // Check if we're in browser environment
     if (!isServerSide) {
+      logWarn('Audio analysis requested in browser environment', {}, 'AudioAnalysis');
       return {
         success: false,
         error: 'Audio analysis is only available on the server side. This functionality requires a backend API.'
@@ -104,6 +117,7 @@ class AudioAnalysisService {
 
     // Check if Node.js modules are available
     if (!spawn || !path) {
+      logError('Node.js modules not available for audio analysis', {}, 'AudioAnalysis');
       return {
         success: false,
         error: 'Node.js modules not available for audio analysis.'
@@ -130,7 +144,11 @@ class AudioAnalysisService {
       // Add JSON output format flag
       args.push('--format', 'json');
 
-      console.log(`Starting audio analysis: ${this.pythonPath} ${args.join(' ')}`);
+      logInfo('Executing Python analysis script', {
+        pythonPath: this.pythonPath,
+        args: args,
+        filePath: filePath
+      }, 'AudioAnalysis');
 
       // Spawn the Python process
       const pythonProcess = spawn(this.pythonPath, args, {
@@ -152,17 +170,32 @@ class AudioAnalysisService {
       // Collect stderr data
       pythonProcess.stderr.on('data', (data: any) => {
         stderr += data.toString();
-        console.error('Python stderr:', data.toString());
+        logError('Python process stderr output', {
+          stderr: data.toString(),
+          filePath: filePath
+        }, 'AudioAnalysis');
       });
 
       // Handle process completion
       pythonProcess.on('close', (code: number) => {
         const processingTime = Date.now() - startTime;
         
+        logInfo('Python process completed', {
+          exitCode: code,
+          processingTime: processingTime,
+          filePath: filePath
+        }, 'AudioAnalysis');
+        
         if (code === 0) {
           try {
             // Parse the JSON output from Python
             const analysis = JSON.parse(stdout);
+            
+            logInfo('Audio analysis completed successfully', {
+              filePath: filePath,
+              processingTime: processingTime,
+              hasAnalysis: !!analysis
+            }, 'AudioAnalysis');
             
             resolve({
               success: true,
@@ -170,8 +203,12 @@ class AudioAnalysisService {
               processingTime
             });
           } catch (parseError) {
-            console.error('Failed to parse Python output:', parseError);
-            console.error('Raw stdout:', stdout);
+            logError('Failed to parse Python analysis output', {
+              parseError: parseError instanceof Error ? parseError.message : String(parseError),
+              rawStdout: stdout,
+              filePath: filePath,
+              processingTime: processingTime
+            }, 'AudioAnalysis');
             
             resolve({
               success: false,
@@ -180,8 +217,12 @@ class AudioAnalysisService {
             });
           }
         } else {
-          console.error(`Python process exited with code ${code}`);
-          console.error('stderr:', stderr);
+          logError('Python process failed', {
+            exitCode: code,
+            stderr: stderr,
+            filePath: filePath,
+            processingTime: processingTime
+          }, 'AudioAnalysis');
           
           resolve({
             success: false,
@@ -194,7 +235,12 @@ class AudioAnalysisService {
       // Handle process errors
       pythonProcess.on('error', (error: any) => {
         const processingTime = Date.now() - startTime;
-        console.error('Failed to start Python process:', error);
+        logError('Failed to start Python process', {
+          error: error.message,
+          pythonPath: this.pythonPath,
+          filePath: filePath,
+          processingTime: processingTime
+        }, 'AudioAnalysis');
         
         resolve({
           success: false,
@@ -205,6 +251,11 @@ class AudioAnalysisService {
 
       // Set a timeout for long-running processes (5 minutes)
       const timeout = setTimeout(() => {
+        logError('Audio analysis timed out', {
+          filePath: filePath,
+          timeoutMs: 5 * 60 * 1000
+        }, 'AudioAnalysis');
+        
         pythonProcess.kill('SIGTERM');
         resolve({
           success: false,
@@ -228,13 +279,26 @@ class AudioAnalysisService {
    */
   private async downloadFromAzure(azureUrl: string, localPath: string): Promise<boolean> {
     if (!isServerSide || !fs || !path) {
-      console.error('File system operations not available in browser');
+      logError('File system operations not available in browser environment', {
+        azureUrl: azureUrl,
+        localPath: localPath
+      }, 'AudioAnalysis');
       return false;
     }
+
+    logInfo('Downloading file from Azure for analysis', {
+      azureUrl: azureUrl,
+      localPath: localPath
+    }, 'AudioAnalysis');
 
     try {
       const response = await fetch(azureUrl);
       if (!response.ok) {
+        logError('Failed to fetch file from Azure', {
+          azureUrl: azureUrl,
+          status: response.status,
+          statusText: response.statusText
+        }, 'AudioAnalysis');
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
 
@@ -242,15 +306,26 @@ class AudioAnalysisService {
       const dir = path.dirname(localPath);
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
+        logInfo('Created directory for temporary file', { directory: dir }, 'AudioAnalysis');
       }
 
       // Write file
       const arrayBuffer = await response.arrayBuffer();
       fs.writeFileSync(localPath, Buffer.from(arrayBuffer));
       
+      logInfo('File downloaded successfully from Azure', {
+        azureUrl: azureUrl,
+        localPath: localPath,
+        fileSize: arrayBuffer.byteLength
+      }, 'AudioAnalysis');
+      
       return true;
     } catch (error) {
-      console.error('Failed to download file from Azure:', error);
+      logError('Failed to download file from Azure', {
+        azureUrl: azureUrl,
+        localPath: localPath,
+        error: error instanceof Error ? error.message : String(error)
+      }, 'AudioAnalysis');
       return false;
     }
   }
@@ -271,8 +346,15 @@ class AudioAnalysisService {
       keepLocalFile?: boolean;
     } = {}
   ): Promise<AudioAnalysisResult> {
+    logInfo('Starting analysis from Azure file', {
+      azureFileName: azureFileName,
+      azureUrl: azureUrl,
+      options: options
+    }, 'AudioAnalysis');
+    
     // Check if we're in browser environment
     if (!isServerSide) {
+      logWarn('Azure analysis requested in browser environment', {}, 'AudioAnalysis');
       return {
         success: false,
         error: 'Audio analysis is only available on the server side. This functionality requires a backend API.'
@@ -281,6 +363,7 @@ class AudioAnalysisService {
 
     // Check if Node.js modules are available
     if (!path || !fs) {
+      logError('File system modules not available for Azure analysis', {}, 'AudioAnalysis');
       return {
         success: false,
         error: 'File system modules not available for audio analysis.'
@@ -293,10 +376,13 @@ class AudioAnalysisService {
 
     try {
       // Download the file from Azure
-      console.log(`Downloading file from Azure: ${azureFileName}`);
       const downloadSuccess = await this.downloadFromAzure(azureUrl, localPath);
       
       if (!downloadSuccess) {
+        logError('Failed to download file from Azure for analysis', {
+          azureFileName: azureFileName,
+          azureUrl: azureUrl
+        }, 'AudioAnalysis');
         return {
           success: false,
           error: 'Failed to download file from Azure storage'
@@ -304,22 +390,31 @@ class AudioAnalysisService {
       }
 
       // Analyze the local file
-      console.log(`Analyzing local file: ${localPath}`);
       const result = await this.analyzeAudio(localPath, options);
 
       // Clean up the temporary file unless requested to keep it
       if (!options.keepLocalFile) {
         try {
           fs.unlinkSync(localPath);
-          console.log(`Cleaned up temporary file: ${localPath}`);
+          logInfo('Cleaned up temporary analysis file', {
+            localPath: localPath,
+            azureFileName: azureFileName
+          }, 'AudioAnalysis');
         } catch (cleanupError) {
-          console.warn('Failed to cleanup temporary file:', cleanupError);
+          logWarn('Failed to cleanup temporary file', {
+            localPath: localPath,
+            error: cleanupError instanceof Error ? cleanupError.message : String(cleanupError)
+          }, 'AudioAnalysis');
         }
       }
 
       return result;
     } catch (error) {
-      console.error('Error in analyzeFromAzure:', error);
+      logError('Error in analyzeFromAzure', {
+        azureFileName: azureFileName,
+        azureUrl: azureUrl,
+        error: error instanceof Error ? error.message : String(error)
+      }, 'AudioAnalysis');
       return {
         success: false,
         error: `Analysis failed: ${error instanceof Error ? error.message : String(error)}`
@@ -332,8 +427,11 @@ class AudioAnalysisService {
    * @returns Promise<boolean> - Whether the analysis environment is ready
    */
   async checkEnvironment(): Promise<{ ready: boolean; error?: string }> {
+    logInfo('Checking Python environment for audio analysis', {}, 'AudioAnalysis');
+    
     // Check if we're in browser environment
     if (!isServerSide) {
+      logWarn('Environment check requested in browser', {}, 'AudioAnalysis');
       return {
         ready: false,
         error: 'Python environment check is only available on the server side.'
@@ -342,6 +440,7 @@ class AudioAnalysisService {
 
     // Check if Node.js modules are available
     if (!spawn) {
+      logError('Child process module not available for environment check', {}, 'AudioAnalysis');
       return {
         ready: false,
         error: 'Child process module not available for Python environment check.'
@@ -349,6 +448,8 @@ class AudioAnalysisService {
     }
 
     return new Promise((resolve) => {
+      logDebug('Testing Python environment with import check', {}, 'AudioAnalysis');
+      
       const pythonProcess = spawn(this.pythonPath, ['-c', 'import librosa, numpy, scipy; print("OK")'], {
         stdio: ['pipe', 'pipe', 'pipe']
       });
@@ -366,8 +467,17 @@ class AudioAnalysisService {
 
       pythonProcess.on('close', (code: number) => {
         if (code === 0 && stdout.trim() === 'OK') {
+          logInfo('Python environment check passed', {
+            pythonPath: this.pythonPath,
+            stdout: stdout.trim()
+          }, 'AudioAnalysis');
           resolve({ ready: true });
         } else {
+          logError('Python environment check failed', {
+            exitCode: code,
+            stderr: stderr,
+            stdout: stdout
+          }, 'AudioAnalysis');
           resolve({ 
             ready: false, 
             error: `Python environment check failed: ${stderr || 'Unknown error'}` 
@@ -376,6 +486,10 @@ class AudioAnalysisService {
       });
 
       pythonProcess.on('error', (error: any) => {
+        logError('Failed to run Python environment check', {
+          pythonPath: this.pythonPath,
+          error: error.message
+        }, 'AudioAnalysis');
         resolve({ 
           ready: false, 
           error: `Failed to run Python: ${error.message}` 
