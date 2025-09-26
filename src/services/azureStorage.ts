@@ -1,6 +1,7 @@
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob';
 import { v4 as uuidv4 } from 'uuid';
 import { FileValidationResult, UploadResult, StorageService } from '../types/storage';
+import { logInfo, logWarn, logError, logDebug } from './logger';
 
 // Allowed audio file types
 const ALLOWED_AUDIO_TYPES = {
@@ -26,6 +27,12 @@ export class AzureStorageService implements StorageService {
     this.containerName = containerName || import.meta.env.VITE_AZURE_CONTAINER_NAME || 'songs';
     this.sasToken = sasToken || import.meta.env.VITE_AZURE_SAS_TOKEN || 'sp=racwdli&st=2025-09-26T12:04:45Z&se=2030-09-26T20:19:45Z&sip=82.132.216.101&spr=https&sv=2024-11-04&sr=c&sig=dNPZ%2BOACTko9f3l06DmAaDXN0mcg1tR7h5gkfBXgR54%3D';
 
+    logInfo(`Initializing Azure Storage Service`, {
+      accountName: this.accountName,
+      containerName: this.containerName,
+      sasTokenLength: this.sasToken.length
+    }, 'AzureStorage');
+
     this.initializeClient();
   }
 
@@ -37,9 +44,12 @@ export class AzureStorageService implements StorageService {
       const blobServiceUrl = `https://${this.accountName}.blob.core.windows.net?${this.sasToken}`;
       const blobServiceClient = new BlobServiceClient(blobServiceUrl);
       this.containerClient = blobServiceClient.getContainerClient(this.containerName);
-      console.log('Azure Blob Storage client initialized successfully');
+      logInfo('Azure Blob Storage client initialized successfully', {
+        accountName: this.accountName,
+        containerName: this.containerName
+      }, 'AzureStorage');
     } catch (error) {
-      console.error('Failed to initialize Azure Blob Storage client:', error);
+      logError('Failed to initialize Azure Blob Storage client', error, 'AzureStorage');
       this.containerClient = null;
     }
   }
@@ -49,6 +59,7 @@ export class AzureStorageService implements StorageService {
    */
   updateSasToken(sasToken: string): void {
     this.sasToken = sasToken;
+    logInfo('SAS token updated, reinitializing client', { sasTokenLength: sasToken.length }, 'AzureStorage');
     this.initializeClient();
   }
 
@@ -56,9 +67,20 @@ export class AzureStorageService implements StorageService {
    * Validates if the uploaded file is an allowed audio type
    */
   validateAudioFile(file: File): FileValidationResult {
+    logDebug('Validating audio file', {
+      fileName: file.name,
+      fileSize: file.size,
+      fileType: file.type
+    }, 'AzureStorage');
+
     // Check file size (max 100MB)
     const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB in bytes
     if (file.size > MAX_FILE_SIZE) {
+      logWarn('File size validation failed', {
+        fileName: file.name,
+        fileSize: file.size,
+        maxSize: MAX_FILE_SIZE
+      }, 'AzureStorage');
       return {
         isValid: false,
         error: 'File size exceeds 100MB limit'
@@ -71,6 +93,11 @@ export class AzureStorageService implements StorageService {
     
     // Check if extension is allowed
     if (!ALLOWED_EXTENSIONS.includes(fileExtension)) {
+      logWarn('File extension validation failed', {
+        fileName: file.name,
+        extension: fileExtension,
+        allowedExtensions: ALLOWED_EXTENSIONS
+      }, 'AzureStorage');
       return {
         isValid: false,
         error: `File type not supported. Allowed types: ${ALLOWED_EXTENSIONS.join(', ')}`
@@ -88,9 +115,18 @@ export class AzureStorageService implements StorageService {
       if (!isValidMimeType) {
         // Sometimes browsers don't set the correct MIME type, so we'll be lenient
         // and only check the extension if MIME type doesn't match
-        console.warn(`MIME type mismatch for ${fileName}: expected audio type, got ${file.type}`);
+        logWarn('MIME type mismatch detected', {
+          fileName: fileName,
+          expectedMimeTypes: allowedMimeTypes,
+          actualMimeType: file.type
+        }, 'AzureStorage');
       }
     }
+
+    logDebug('File validation successful', {
+      fileName: file.name,
+      fileType: fileExtension
+    }, 'AzureStorage');
 
     return {
       isValid: true,
@@ -105,16 +141,36 @@ export class AzureStorageService implements StorageService {
     const fileExtension = originalName.substring(originalName.lastIndexOf('.'));
     const uniqueId = uuidv4();
     const timestamp = Date.now();
-    return `${timestamp}_${uniqueId}${fileExtension}`;
+    const uniqueFileName = `${timestamp}_${uniqueId}${fileExtension}`;
+    
+    logDebug('Generated unique filename', {
+      originalName: originalName,
+      uniqueFileName: uniqueFileName,
+      timestamp: timestamp,
+      uniqueId: uniqueId
+    }, 'AzureStorage');
+    
+    return uniqueFileName;
   }
 
   /**
    * Uploads a file to Azure Blob Storage
    */
   async uploadFile(file: File): Promise<UploadResult> {
+    const startTime = Date.now();
+    logInfo('Starting file upload', {
+      fileName: file.name,
+      fileSize: file.size,
+      fileType: file.type
+    }, 'AzureStorage');
+
     try {
       // Check if client is initialized
       if (!this.containerClient) {
+        logError('Azure Storage client not initialized', {
+          accountName: this.accountName,
+          containerName: this.containerName
+        }, 'AzureStorage');
         return {
           success: false,
           error: 'Azure Storage client not initialized. Please check configuration.'
@@ -124,6 +180,10 @@ export class AzureStorageService implements StorageService {
       // Validate file first
       const validation = this.validateAudioFile(file);
       if (!validation.isValid) {
+        logWarn('File upload failed validation', {
+          fileName: file.name,
+          error: validation.error
+        }, 'AzureStorage');
         return {
           success: false,
           error: validation.error
@@ -132,6 +192,13 @@ export class AzureStorageService implements StorageService {
 
       // Generate unique file name
       const uniqueFileName = this.generateUniqueFileName(file.name);
+      
+      logInfo('Uploading file to Azure Blob Storage', {
+        originalName: file.name,
+        uniqueFileName: uniqueFileName,
+        accountName: this.accountName,
+        containerName: this.containerName
+      }, 'AzureStorage');
 
       // Create blob client
       const blobClient = this.containerClient.getBlockBlobClient(uniqueFileName);
@@ -147,11 +214,30 @@ export class AzureStorageService implements StorageService {
             uploadedAt: new Date().toISOString()
           }
         });
+        
+        const uploadTime = Date.now() - startTime;
+        logInfo('File uploaded successfully', {
+          fileName: file.name,
+          uniqueFileName: uniqueFileName,
+          uploadTimeMs: uploadTime,
+          fileSize: file.size
+        }, 'AzureStorage');
+        
       } catch (uploadError: any) {
-        console.error('Upload error details:', uploadError);
+        logError('Azure upload error', {
+          fileName: file.name,
+          uniqueFileName: uniqueFileName,
+          error: uploadError.message,
+          code: uploadError.code,
+          uploadTimeMs: Date.now() - startTime
+        }, 'AzureStorage');
         
         // Check for specific error types
         if (uploadError.message?.includes('fetch')) {
+          logError('Network/CORS error detected', {
+            fileName: file.name,
+            error: uploadError.message
+          }, 'AzureStorage');
           return {
             success: false,
             error: 'Upload failed due to network/CORS issues. Please check Azure Storage CORS configuration.'
@@ -159,6 +245,10 @@ export class AzureStorageService implements StorageService {
         }
         
         if (uploadError.code === 'AuthenticationFailed') {
+          logError('Azure authentication failed', {
+            fileName: file.name,
+            accountName: this.accountName
+          }, 'AzureStorage');
           return {
             success: false,
             error: 'Authentication failed. Please check your SAS token.'
@@ -166,6 +256,10 @@ export class AzureStorageService implements StorageService {
         }
         
         if (uploadError.code === 'ContainerNotFound') {
+          logError('Azure container not found', {
+            fileName: file.name,
+            containerName: this.containerName
+          }, 'AzureStorage');
           return {
             success: false,
             error: 'Container not found. Please verify the container name and permissions.'
@@ -178,6 +272,13 @@ export class AzureStorageService implements StorageService {
       // Generate file URL (without SAS token for security)
       const fileUrl = `https://${this.accountName}.blob.core.windows.net/${this.containerName}/${uniqueFileName}`;
 
+      logInfo('Upload completed successfully', {
+        fileName: file.name,
+        uniqueFileName: uniqueFileName,
+        fileUrl: fileUrl,
+        totalTimeMs: Date.now() - startTime
+      }, 'AzureStorage');
+
       return {
         success: true,
         fileName: uniqueFileName,
@@ -185,10 +286,19 @@ export class AzureStorageService implements StorageService {
       };
 
     } catch (error) {
-      console.error('Error uploading file:', error);
+      const uploadTime = Date.now() - startTime;
+      logError('Unexpected error during file upload', {
+        fileName: file.name,
+        error: error instanceof Error ? error.message : String(error),
+        uploadTimeMs: uploadTime
+      }, 'AzureStorage');
       
       // Provide more specific error messages
       if (error instanceof TypeError && error.message.includes('fetch')) {
+        logError('Network fetch error detected', {
+          fileName: file.name,
+          error: error.message
+        }, 'AzureStorage');
         return {
           success: false,
           error: 'Network error: Unable to connect to Azure Storage. This is likely a CORS configuration issue.'
@@ -206,25 +316,47 @@ export class AzureStorageService implements StorageService {
    * Uploads multiple files concurrently
    */
   async uploadMultipleFiles(files: File[]): Promise<UploadResult[]> {
+    logInfo('Starting multiple file upload', {
+      fileCount: files.length,
+      totalSize: files.reduce((sum, file) => sum + file.size, 0)
+    }, 'AzureStorage');
+    
     const uploadPromises = files.map(file => this.uploadFile(file));
-    return Promise.all(uploadPromises);
+    const results = await Promise.all(uploadPromises);
+    
+    const successful = results.filter(r => r.success).length;
+    const failed = results.filter(r => !r.success).length;
+    
+    logInfo('Multiple file upload completed', {
+      totalFiles: files.length,
+      successful: successful,
+      failed: failed
+    }, 'AzureStorage');
+    
+    return results;
   }
 
   /**
    * Deletes a file from Azure Blob Storage
    */
   async deleteFile(fileName: string): Promise<boolean> {
+    logInfo('Attempting to delete file', { fileName }, 'AzureStorage');
+    
     try {
       if (!this.containerClient) {
-        console.error('Azure Storage client not initialized');
+        logError('Cannot delete file: Azure Storage client not initialized', { fileName }, 'AzureStorage');
         return false;
       }
 
       const blobClient = this.containerClient.getBlockBlobClient(fileName);
       await blobClient.delete();
+      logInfo('File deleted successfully', { fileName }, 'AzureStorage');
       return true;
     } catch (error) {
-      console.error('Error deleting file:', error);
+      logError('Error deleting file', {
+        fileName: fileName,
+        error: error instanceof Error ? error.message : String(error)
+      }, 'AzureStorage');
       return false;
     }
   }
@@ -250,6 +382,17 @@ export class AzureStorageService implements StorageService {
    * Checks if the service is properly configured and ready for use
    */
   isConfigured(): boolean {
-    return !!(this.containerClient && this.accountName && this.containerName && this.sasToken);
+    const configured = !!(this.containerClient && this.accountName && this.containerName && this.sasToken);
+    
+    if (!configured) {
+      logWarn('Azure Storage not properly configured', {
+        hasClient: !!this.containerClient,
+        hasAccountName: !!this.accountName,
+        hasContainerName: !!this.containerName,
+        hasSasToken: !!this.sasToken
+      }, 'AzureStorage');
+    }
+    
+    return configured;
   }
 }

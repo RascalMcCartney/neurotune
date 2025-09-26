@@ -2,6 +2,7 @@ import { StorageService } from '../types/storage';
 import { AzureStorageService } from './azureStorage';
 import { FilesystemStorageService } from './filesystemStorage';
 import { storageConfig } from '../config/storage';
+import { logInfo, logWarn, logError } from './logger';
 
 class StorageFactory {
   private static instance: StorageService | null = null;
@@ -22,14 +23,18 @@ class StorageFactory {
   private static createStorageService(): StorageService {
     const provider = storageConfig.provider;
     
-    console.log(`Initializing storage provider: ${provider}`);
+    logInfo('Initializing storage provider', { provider }, 'StorageFactory');
 
     switch (provider) {
       case 'azure':
         if (!storageConfig.azure) {
-          console.error('Azure configuration not found, falling back to filesystem');
+          logError('Azure configuration not found, falling back to filesystem', {}, 'StorageFactory');
           return this.createFilesystemService();
         }
+        logInfo('Creating Azure Storage service', {
+          accountName: storageConfig.azure.accountName,
+          containerName: storageConfig.azure.containerName
+        }, 'StorageFactory');
         return new AzureStorageService(
           storageConfig.azure.accountName,
           storageConfig.azure.containerName,
@@ -37,10 +42,14 @@ class StorageFactory {
         );
 
       case 'filesystem':
+        logInfo('Creating Filesystem Storage service', {
+          uploadPath: storageConfig.filesystem?.uploadPath,
+          baseUrl: storageConfig.filesystem?.baseUrl
+        }, 'StorageFactory');
         return this.createFilesystemService();
 
       default:
-        console.warn(`Unknown storage provider: ${provider}, falling back to filesystem`);
+        logWarn('Unknown storage provider, falling back to filesystem', { provider }, 'StorageFactory');
         return this.createFilesystemService();
     }
   }
@@ -60,6 +69,7 @@ class StorageFactory {
    * Reset the singleton instance (useful for testing or config changes)
    */
   static resetInstance(): void {
+    logInfo('Resetting storage service instance', {}, 'StorageFactory');
     this.instance = null;
   }
 
@@ -75,7 +85,14 @@ class StorageFactory {
    */
   static isConfigured(): boolean {
     const service = this.getStorageService();
-    return service.isConfigured();
+    const configured = service.isConfigured();
+    
+    logDebug('Storage configuration check', {
+      provider: storageConfig.provider,
+      configured: configured
+    }, 'StorageFactory');
+    
+    return configured;
   }
 }
 
