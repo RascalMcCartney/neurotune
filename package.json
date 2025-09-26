@@ -8,6 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "install:all": "npm install && node scripts/py-runner.cjs --check-env",
+    "py:run": "node scripts/py-runner.cjs",
     "check-python": "python3 -c \"import librosa, numpy, scipy; print('Python environment ready for audio analysis')\""
   },
   "dependencies": {
