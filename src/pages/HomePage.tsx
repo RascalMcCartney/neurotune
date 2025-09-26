@@ -8,6 +8,7 @@ import BPMFilter from '../components/BPMFilter';
 import GenreFilter from '../components/GenreFilter';
 import SortFilter from '../components/SortFilter';
 import AddTrackDropdown from '../components/AddTrackDropdown';
+import StorageStatus from '../components/StorageStatus';
 import type { Track, TrackOperation, Folder } from '../types/folder';
 
 // Sample data
@@ -2418,6 +2419,7 @@ const HomePage: React.FC = () => {
                 </span>
               </h2>
               <div className="flex items-center space-x-2">
+                <StorageStatus />
                 <button
                   onClick={() => setShowSortFilter(true)}
                   className="flex items-center px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-colors duration-200"
