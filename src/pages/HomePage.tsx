@@ -2162,15 +2162,13 @@ const HomePage: React.FC = () => {
               </h1>
               <p className="text-lg text-gray-300 max-w-3xl mb-2">
                 Explore, analyse, and organise your music collection with powerful tools and insights
-                        {/* Add Track Button */}
-        <div className="flex items-center justify-end mb-6">
-          <div className="w-[190px]">
-            <AddTrackDropdown 
-              onImportFolder={handleImportFolder}
-              onAddTrack={handleAddTrack}
-            />
-          </div>
-        </div>
+              {/* Add Track Button */}
+              <div className="w-[190px]">
+                <AddTrackDropdown 
+                  onImportFolder={handleImportFolder}
+                  onAddTrack={handleAddTrack}
+                />
+              </div>
               </p>
         
 
