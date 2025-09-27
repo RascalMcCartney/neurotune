@@ -2156,7 +2156,7 @@ const HomePage: React.FC = () => {
       <AuthHeader />
 
       {/* New Music Carousel */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
               <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
                 Discover Your Sound
               </h1>
@@ -2164,7 +2164,7 @@ const HomePage: React.FC = () => {
                 Explore, analyse, and organise your music collection with powerful tools and insights
               </p>
         
-              <div className="w-[190px] mb-3">
+        {/* Add Track Button */}
         <div className="flex items-center justify-end mb-6">
           <div className="w-[190px]">
             <AddTrackDropdown 
@@ -2174,7 +2174,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         
-        <div className="mb-4">
+        <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-2xl font-bold text-white">New & Trending</h4>
           </div>
@@ -2204,18 +2204,18 @@ const HomePage: React.FC = () => {
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <button
                           onClick={() => handlePlay(track)}
-                          className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors duration-200"
+                          className="bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-colors duration-200"
                         >
                           {currentTrack?.id === track.id && isPlaying ? (
-                            <Pause className="w-5 h-5 text-white" />
+                            <Pause className="w-6 h-6 text-white" />
                           ) : (
-                            <Play className="w-5 h-5 text-white" />
+                            <Play className="w-6 h-6 text-white" />
                           )}
                         </button>
                       </div>
                     </div>
                     
-                    <div className="p-3">
+                    <div className="p-4">
                       <h3 className="font-bold text-white text-sm mb-1 truncate">{track.title}</h3>
                       <p className="text-purple-200 text-xs mb-2 truncate">{track.artist}</p>
                       
@@ -2235,7 +2235,7 @@ const HomePage: React.FC = () => {
                         ></div>
                       </div>
                       
-                      <div className="flex items-center justify-between mt-2">
+                      <div className="flex items-center justify-between mt-3">
                         <div className="flex items-center space-x-1">
                           <button className="text-white/60 hover:text-red-400 transition-colors duration-200">
                             <Heart className="w-3 h-3" />
@@ -2276,8 +2276,8 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Controls */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 mb-4 space-y-3 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 mb-6 space-y-4 relative z-10">
           {/* Search Row */}
           <div className="w-full">
             <div className="flex-1 flex gap-2">
@@ -2288,19 +2288,19 @@ const HomePage: React.FC = () => {
                   placeholder="Search tracks, artists, albums..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
             </div>
           </div>
           
           {/* Filters Row */}
-          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
-            <div className="flex items-center space-x-3">
+          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+            <div className="flex items-center space-x-4">
               {/* Genre Filter */}
               <button
                 onClick={() => setShowGenreFilter(true)}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                className={`flex items-center space-x-2 px-4 py-3 rounded-lg border transition-all duration-200 ${
                   selectedGenre && selectedGenre !== 'All Genres'
                     ? 'bg-orange-600 border-orange-500 text-white'
                     : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
@@ -2315,7 +2315,7 @@ const HomePage: React.FC = () => {
               {/* Musical Key Filter */}
               <button
                 onClick={() => setShowKeyboard(true)}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                className={`flex items-center space-x-2 px-4 py-3 rounded-lg border transition-all duration-200 ${
                   selectedMusicalKey
                     ? 'bg-purple-600 border-purple-500 text-white'
                     : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
@@ -2330,7 +2330,7 @@ const HomePage: React.FC = () => {
               {/* BPM Filter */}
               <button
                 onClick={() => setShowBPMFilter(true)}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                className={`flex items-center space-x-2 px-4 py-3 rounded-lg border transition-all duration-200 ${
                   bpmMin !== null || bpmMax !== null
                     ? 'bg-green-600 border-green-500 text-white'
                     : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
@@ -2356,7 +2356,7 @@ const HomePage: React.FC = () => {
                   setBpmMin(null);
                   setBpmMax(null);
                 }}
-                className="flex items-center px-3 py-2 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600/30 transition-all duration-200"
+                className="flex items-center px-4 py-2 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600/30 transition-all duration-200"
               >
                 <X className="w-4 h-4 mr-2" />
                 Clear Filters
@@ -2401,8 +2401,8 @@ const HomePage: React.FC = () => {
       />
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Folder Management - Left Column */}
           <div className="lg:col-span-1">
             <div className="sticky top-8">
@@ -2416,7 +2416,7 @@ const HomePage: React.FC = () => {
 
           {/* Track Cards - Right Column */}
           <div className="lg:col-span-3">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white">
                 {selectedFolderId ? 'Filtered Tracks' : 'All Tracks'}
                 <span className="text-blue-300 text-sm">
@@ -2427,7 +2427,7 @@ const HomePage: React.FC = () => {
                 <StorageStatus />
                 <button
                   onClick={() => setShowSortFilter(true)}
-                  className="flex items-center px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-colors duration-200"
+                  className="flex items-center px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-colors duration-200"
                 >
                   <ArrowUpDown className="w-4 h-4 mr-2" />
                   <span className="text-sm">
@@ -2449,7 +2449,7 @@ const HomePage: React.FC = () => {
             </div>
 
             {/* Track Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {currentTracks.map((track) => (
                 <div key={track.id} className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 hover:border-purple-500/50 transition-all duration-300 group hover:transform hover:scale-105">
                   {/* Musical Key Badge */}
@@ -2468,30 +2468,30 @@ const HomePage: React.FC = () => {
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <button
                         onClick={() => handlePlay(track)}
-                        className="bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-colors duration-200"
+                        className="bg-white/20 backdrop-blur-sm rounded-full p-4 hover:bg-white/30 transition-colors duration-200"
                       >
                         {currentTrack?.id === track.id && isPlaying ? (
-                          <Pause className="w-6 h-6 text-white" />
+                          <Pause className="w-8 h-8 text-white" />
                         ) : (
-                          <Play className="w-6 h-6 text-white" />
+                          <Play className="w-8 h-8 text-white" />
                         )}
                       </button>
                     </div>
                   </div>
                   
-                  <div className="p-3">
+                  <div className="p-4 pt-8">
                     <h3 className="font-bold text-white text-lg mb-1 truncate">{track.title}</h3>
                     <p className="text-purple-200 mb-2 truncate">{track.artist}</p>
                     <p className="text-white/60 text-sm mb-3 truncate">{track.album}</p>
                     
-                    <div className="grid grid-cols-2 gap-2 text-xs text-white/80 mb-2">
+                    <div className="grid grid-cols-2 gap-2 text-xs text-white/80 mb-3">
                       <div>Genre: <span className="text-purple-300">{track.genre}</span></div>
                       <div>Year: <span className="text-purple-300">{track.year}</span></div>
                       <div>BPM: <span className="text-purple-300">{track.bpm}</span></div>
                       <div>Key: <span className="text-purple-300">{track.key}</span></div>
                     </div>
                     
-                    <div className="space-y-2 mb-3">
+                    <div className="space-y-2 mb-4">
                       <div className="flex justify-between text-xs">
                         <span className="text-white/60">Energy</span>
                         <span className="text-purple-300">{Math.round(track.energy * 100)}%</span>
@@ -2558,11 +2558,11 @@ const HomePage: React.FC = () => {
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
-              <div className="mt-6 flex justify-center items-center space-x-2">
+              <div className="mt-8 flex justify-center items-center space-x-2">
                 <button
                   onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
-                  className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                  className="px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                 >
                   Previous
                 </button>
@@ -2584,7 +2584,7 @@ const HomePage: React.FC = () => {
                       <button
                         key={pageNum}
                         onClick={() => setCurrentPage(pageNum)}
-                        className={`px-2 py-1 rounded-lg transition-colors duration-200 ${
+                        className={`px-3 py-2 rounded-lg transition-colors duration-200 ${
                           currentPage === pageNum
                             ? 'bg-purple-500 text-white'
                             : 'bg-white/10 border border-white/20 text-white hover:bg-white/20'
@@ -2599,7 +2599,7 @@ const HomePage: React.FC = () => {
                 <button
                   onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
-                  className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                  className="px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                 >
                   Next
                 </button>
@@ -2611,7 +2611,7 @@ const HomePage: React.FC = () => {
 
       {/* Now Playing Bar */}
       {currentTrack && (
-        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-white/20 p-3">
+        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-white/20 p-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <img
@@ -2656,9 +2656,9 @@ const HomePage: React.FC = () => {
 
       {/* Add & Analyse Dialog */}
       {showAddDialog && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 z-50">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-slate-800 rounded-xl max-w-xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-4">
+            <div className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-white">Add & Analyse Track</h2>
                 <button
@@ -2672,17 +2672,17 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* File Upload Section */}
-              <div className="mb-4">
+              <div className="mb-6">
                 <label className="block text-sm font-medium text-white mb-2">
                   Upload Audio File
                 </label>
-                <div className="border-2 border-dashed border-white/30 rounded-lg p-4 text-center hover:border-purple-500/50 transition-colors duration-200">
+                <div className="border-2 border-dashed border-white/30 rounded-lg p-6 text-center hover:border-purple-500/50 transition-colors duration-200">
                   <div className="flex flex-col items-center">
                     <div className="bg-purple-500/20 rounded-full p-3 mb-3">
                       <Upload className="w-6 h-6 text-purple-400" />
                     </div>
-                    <p className="text-white mb-1">Drop your MP3 file here or click to browse</p>
-                    <p className="text-white/60 text-sm mb-3">Maximum file size: 10MB</p>
+                    <p className="text-white mb-2">Drop your MP3 file here or click to browse</p>
+                    <p className="text-white/60 text-sm mb-4">Maximum file size: 10MB</p>
                     <input
                       type="file"
                       accept=".mp3"
@@ -2692,7 +2692,7 @@ const HomePage: React.FC = () => {
                     />
                     <label
                       htmlFor="file-upload"
-                      className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-lg cursor-pointer transition-colors duration-200"
+                      className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg cursor-pointer transition-colors duration-200"
                     >
                       Choose File
                     </label>
@@ -2706,8 +2706,8 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* Track Metadata Fields */}
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-white mb-3">Track Information</h3>
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-white mb-4">Track Information</h3>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
@@ -2742,7 +2742,7 @@ const HomePage: React.FC = () => {
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Duration
@@ -2795,8 +2795,8 @@ const HomePage: React.FC = () => {
               </div>
 
               {/* Audio Features */}
-              <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-white mb-3">Audio Features</h3>
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-white mb-4">Audio Features</h3>
                 
                 <div>
                   <label className="block text-sm font-medium text-white mb-2">
@@ -2851,14 +2851,14 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex space-x-3 mt-4">
+              <div className="flex space-x-3 mt-6">
                 <button
                   onClick={() => setShowAddDialog(false)}
-                  className="flex-1 bg-white/10 hover:bg-white/20 text-white py-2 rounded-lg font-medium transition-colors duration-200"
+                  className="flex-1 bg-white/10 hover:bg-white/20 text-white py-3 rounded-lg font-medium transition-colors duration-200"
                 >
                   Cancel
                 </button>
-                <button className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-2 rounded-lg font-medium transition-all duration-200">
+                <button className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 rounded-lg font-medium transition-all duration-200">
                   Analyse
                 </button>
               </div>
