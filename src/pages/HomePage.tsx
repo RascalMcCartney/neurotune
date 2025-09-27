@@ -2083,7 +2083,7 @@ const HomePage: React.FC = () => {
 
     setFilteredTracks(filtered);
 
-  }, [tracks, searchTerm, selectedGenre, sortCriteria, selectedMusicalKey, bpmMin, bpmMax, audioFeaturesFilters]);</parameter>
+  }, [tracks, searchTerm, selectedGenre, sortCriteria, selectedMusicalKey, bpmMin, bpmMax, audioFeaturesFilters]);
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredTracks.length / tracksPerPage);
