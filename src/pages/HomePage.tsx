@@ -2155,10 +2155,9 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <AuthHeader />
 
-      {/* Header Section */}
-      <div className="px-4 sm:px-6 lg:px-8 py-4">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
+      {/* New Music Carousel */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+              <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
                 Discover Your Sound
               </h1>
               <p className="text-lg text-gray-300 max-w-4xl mb-2">
@@ -2175,28 +2174,9 @@ const HomePage: React.FC = () => {
           </div>
         </div>
         
-        </div>
-      </div>
-
-      {/* Add Track Button - Full Width */}
-      <div className="px-4 sm:px-6 lg:px-8 py-2">
-        <div className="flex items-center justify-end">
-          <div className="w-[190px]">
-            <AddTrackDropdown 
-              onImportFolder={handleImportFolder}
-              onAddTrack={handleAddTrack}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* New Music Carousel - Full Width */}
-      <div className="px-4 sm:px-6 lg:px-8 py-4">
         <div className="mb-4">
           <div className="flex items-center justify-between mb-4">
-            <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
             <h4 className="text-2xl font-bold text-white">New & Trending</h4>
-            </div>
           </div>
           
           <div className="relative">
@@ -2286,6 +2266,14 @@ const HomePage: React.FC = () => {
                 View All →
               </button>
             */}  
+            </div>
+
+            {/* Gradient Fade Effects */}
+            <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-slate-900 to-transparent pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-slate-900 to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
       </div>
 
       {/* Controls */}
