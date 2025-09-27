@@ -2255,3 +2255,633 @@ const HomePage: React.FC = () => {
                         ></div>
                       </div>
                       
+                      <div className="flex items-center justify-between mt-2">
+                        <div className="flex items-center space-x-1">
+                          <button className="text-white/60 hover:text-red-400 transition-colors duration-200">
+                            <Heart className="w-3 h-3" />
+                          </button>
+                          <button className="text-white/60 hover:text-blue-400 transition-colors duration-200">
+                            <Share2 className="w-3 h-3" />
+                          </button>
+                        </div>
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <div
+                              key={i}
+                              className={`w-1.5 h-1.5 rounded-full ${
+                                i < Math.round(track.popularity / 20) 
+                                  ? 'bg-yellow-400' 
+                                  : 'bg-white/20'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/*             
+            <button className="text-purple-300 hover:text-white text-sm font-medium //transitioncolors duration-200">
+                View All →
+              </button>
+            */}  
+      </div>
+
+      {/* Controls */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 mb-4 space-y-3 relative z-10">
+          {/* Search Row */}
+          <div className="w-full">
+            <div className="flex-1 flex gap-2">
+              <div className="relative flex-1">
+                <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-white/60" />
+                <input
+                  type="text"
+                  placeholder="Search tracks, artists, albums..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Filters Row */}
+          <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+            <div className="flex items-center space-x-3">
+              {/* Genre Filter */}
+              <button
+                onClick={() => setShowGenreFilter(true)}
+                className={`flex items-center space-x-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                  selectedGenre && selectedGenre !== 'All Genres'
+                    ? 'bg-orange-600 border-orange-500 text-white'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+                }`}
+              >
+                <Music className="w-4 h-4" />
+                <span className="text-sm font-medium">
+                  {selectedGenre || 'Genre'}
+                </span>
+              </button>
+
+              {/* Musical Key Filter */}
+              <button
+                onClick={() => setShowKeyboard(true)}
+                className={`flex items-center space-x-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                  selectedMusicalKey
+                    ? 'bg-purple-600 border-purple-500 text-white'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+                }`}
+              >
+                <Piano className="w-4 h-4" />
+                <span className="text-sm font-medium">
+                  {selectedMusicalKey ? `Key: ${selectedMusicalKey}` : 'Musical Key'}
+                </span>
+              </button>
+
+              {/* BPM Filter */}
+              <button
+                onClick={() => setShowBPMFilter(true)}
+                className={`flex items-center space-x-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
+                  bpmMin !== null || bpmMax !== null
+                    ? 'bg-green-600 border-green-500 text-white'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+                }`}
+              >
+                <Activity className="w-4 h-4" />
+                <span className="text-sm font-medium">
+                  {(bpmMin !== null || bpmMax !== null) 
+                    ? `BPM: ${bpmMin || '0'}-${bpmMax || '∞'}` 
+                    : 'BPM Range'
+                  }
+                </span>
+              </button>
+
+            </div>
+            
+            {(searchTerm || selectedMusicalKey || selectedFolderId || bpmMin !== null || bpmMax !== null) && (
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedMusicalKey(null);
+                  setSelectedFolderId(null);
+                  setBpmMin(null);
+                  setBpmMax(null);
+                }}
+                className="flex items-center px-3 py-2 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600/30 transition-all duration-200"
+              >
+                <X className="w-4 h-4 mr-2" />
+                Clear Filters
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Musical Keyboard Popup */}
+      <MusicalKeyboard
+        isOpen={showKeyboard}
+        onClose={() => setShowKeyboard(false)}
+        onKeySelect={setSelectedMusicalKey}
+        selectedKey={selectedMusicalKey}
+      />
+
+      {/* Genre Filter Popup */}
+      <GenreFilter
+        isOpen={showGenreFilter}
+        onClose={() => setShowGenreFilter(false)}
+        onGenreChange={setSelectedGenre}
+        selectedGenre={selectedGenre}
+      />
+      
+      {/* BPM Filter Popup */}
+      <BPMFilter
+        isOpen={showBPMFilter}
+        onClose={() => setShowBPMFilter(false)}
+        onBPMRangeChange={handleBPMRangeChange}
+        currentMinBPM={bpmMin}
+        currentMaxBPM={bpmMax}
+      />
+
+      {/* Sort Filter Popup */}
+      <SortFilter
+        isOpen={showSortFilter}
+        onClose={() => setShowSortFilter(false)}
+        onSortChange={handleSortChange}
+        currentSortBy={sortBy}
+        currentSortOrder={sortOrder}
+      />
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Folder Management - Left Column */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-8">
+              <FolderManage 
+                onFolderSelect={setSelectedFolderId}
+                selectedFolderId={selectedFolderId}
+                tracks={sampleTracks}
+              />
+            </div>
+          </div>
+
+          {/* Track Cards - Right Column */}
+          <div className="lg:col-span-3">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-bold text-white">
+                {selectedFolderId ? 'Filtered Tracks' : 'All Tracks'}
+                <span className="text-blue-300 text-sm">
+                  ({currentTracks.length} tracks)
+                </span>
+              </h2>
+              <div className="flex items-center space-x-2">
+                <StorageStatus />
+                <button
+                  onClick={() => setShowSortFilter(true)}
+                  className="flex items-center px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-colors duration-200"
+                >
+                  <ArrowUpDown className="w-4 h-4 mr-2" />
+                  <span className="text-sm">
+                    Sort: {sortCriteria.length > 0 ? (
+                      <>
+                        {sortCriteria.map((criteria, index) => {
+                          const fieldLabels = {
+                            'title': 'Title', 'artist': 'Artist', 'album': 'Album', 'genre': 'Genre',
+                            'year': 'Year', 'duration': 'Duration', 'bpm': 'BPM', 'key': 'Key',
+                            'energy': 'Energy', 'popularity': 'Popularity'
+                          };
+                          return `${fieldLabels[criteria.field as keyof typeof fieldLabels] || criteria.field} ${criteria.direction === 'asc' ? '↑' : '↓'}`;
+                        }).join(', ')}
+                      </>
+                    ) : 'None'}
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            {/* Track Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {currentTracks.map((track) => (
+                <div key={track.id} className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 hover:border-purple-500/50 transition-all duration-300 group hover:transform hover:scale-105">
+                  {/* Musical Key Badge */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className="bg-purple-100 text-purple-800 text-xs font-semibold px-2 py-1 rounded-full">
+                      {track.key}
+                    </span>
+                  </div>
+                  
+                  <div className="relative">
+                    <img
+                      src={track.imageUrl}
+                      alt={track.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <button
+                        onClick={() => handlePlay(track)}
+                        className="bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-colors duration-200"
+                      >
+                        {currentTrack?.id === track.id && isPlaying ? (
+                          <Pause className="w-6 h-6 text-white" />
+                        ) : (
+                          <Play className="w-6 h-6 text-white" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="p-3">
+                    <h3 className="font-bold text-white text-lg mb-1 truncate">{track.title}</h3>
+                    <p className="text-purple-200 mb-2 truncate">{track.artist}</p>
+                    <p className="text-white/60 text-sm mb-3 truncate">{track.album}</p>
+                    
+                    <div className="grid grid-cols-2 gap-2 text-xs text-white/80 mb-2">
+                      <div>Genre: <span className="text-purple-300">{track.genre}</span></div>
+                      <div>Year: <span className="text-purple-300">{track.year}</span></div>
+                      <div>BPM: <span className="text-purple-300">{track.bpm}</span></div>
+                      <div>Key: <span className="text-purple-300">{track.key}</span></div>
+                    </div>
+                    
+                    <div className="space-y-2 mb-3">
+                      <div className="flex justify-between text-xs">
+                        <span className="text-white/60">Energy</span>
+                        <span className="text-purple-300">{Math.round(track.energy * 100)}%</span>
+                      </div>
+                      <div className="w-full bg-white/20 rounded-full h-1.5">
+                        <div 
+                          className="bg-gradient-to-r from-purple-500 to-pink-500 h-1.5 rounded-full transition-all duration-300"
+                          style={{ width: `${track.energy * 100}%` }}
+                        ></div>
+                      </div>
+                      
+                      <div className="flex justify-between text-xs">
+                        <span className="text-white/60">Danceability</span>
+                        <span className="text-purple-300">{Math.round(track.danceability * 100)}%</span>
+                      </div>
+                      <div className="w-full bg-white/20 rounded-full h-1.5">
+                        <div 
+                          className="bg-gradient-to-r from-green-500 to-blue-500 h-1.5 rounded-full transition-all duration-300"
+                          style={{ width: `${track.danceability * 100}%` }}
+                        ></div>
+                      </div>
+                      
+                      <div className="flex justify-between text-xs">
+                        <span className="text-white/60">Valence</span>
+                        <span className="text-purple-300">{Math.round(track.valence * 100)}%</span>
+                      </div>
+                      <div className="w-full bg-white/20 rounded-full h-1.5">
+                        <div 
+                          className="bg-gradient-to-r from-yellow-500 to-orange-500 h-1.5 rounded-full transition-all duration-300"
+                          style={{ width: `${track.valence * 100}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <button className="text-white/60 hover:text-red-400 transition-colors duration-200">
+                          <Heart className="w-4 h-4" />
+                        </button>
+                        <button className="text-white/60 hover:text-blue-400 transition-colors duration-200">
+                          <Share2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <div className="flex">
+                          {[...Array(5)].map((_, i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full ${
+                                i < Math.round(track.popularity / 20) 
+                                  ? 'bg-yellow-400' 
+                                  : 'bg-white/20'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                        <span className="text-xs text-white/60 ml-1">{track.popularity}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="mt-6 flex justify-center items-center space-x-2">
+                <button
+                  onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                  className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                >
+                  Previous
+                </button>
+                
+                <div className="flex space-x-1">
+                  {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                    let pageNum;
+                    if (totalPages <= 5) {
+                      pageNum = i + 1;
+                    } else if (currentPage <= 3) {
+                      pageNum = i + 1;
+                    } else if (currentPage >= totalPages - 2) {
+                      pageNum = totalPages - 4 + i;
+                    } else {
+                      pageNum = currentPage - 2 + i;
+                    }
+                    
+                    return (
+                      <button
+                        key={pageNum}
+                        onClick={() => setCurrentPage(pageNum)}
+                        className={`px-2 py-1 rounded-lg transition-colors duration-200 ${
+                          currentPage === pageNum
+                            ? 'bg-purple-500 text-white'
+                            : 'bg-white/10 border border-white/20 text-white hover:bg-white/20'
+                        }`}
+                      >
+                        {pageNum}
+                      </button>
+                    );
+                  })}
+                </div>
+                
+                <button
+                  onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                  className="px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                >
+                  Next
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Now Playing Bar */}
+      {currentTrack && (
+        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-white/20 p-3">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <img
+                src={currentTrack.imageUrl}
+                alt={currentTrack.title}
+                className="w-12 h-12 rounded-lg object-cover"
+              />
+              <div>
+                <h4 className="text-white font-medium">{currentTrack.title}</h4>
+                <p className="text-white/60 text-sm">{currentTrack.artist}</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <button className="text-white/60 hover:text-white transition-colors duration-200">
+                <SkipBack className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="bg-white text-black rounded-full p-2 hover:bg-white/90 transition-colors duration-200"
+              >
+                {isPlaying ? (
+                  <Pause className="w-5 h-5" />
+                ) : (
+                  <Play className="w-5 h-5" />
+                )}
+              </button>
+              <button className="text-white/60 hover:text-white transition-colors duration-200">
+                <SkipForward className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <Volume2 className="w-5 h-5 text-white/60" />
+              <div className="w-24 bg-white/20 rounded-full h-1">
+                <div className="bg-white h-1 rounded-full w-3/4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add & Analyse Dialog */}
+      {showAddDialog && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 z-50">
+          <div className="bg-slate-800 rounded-xl max-w-xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold text-white">Add & Analyse Track</h2>
+                <button
+                  onClick={() => setShowAddDialog(false)}
+                  className="text-white/60 hover:text-white transition-colors duration-200"
+                >
+                  <div className="w-8 h-8 rounded-full border-2 border-white/60 hover:border-white flex items-center justify-center transition-colors duration-200">
+                    <X className="w-4 h-4" />
+                  </div>
+                </button>
+              </div>
+
+              {/* File Upload Section */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-white mb-2">
+                  Upload Audio File
+                </label>
+                <div className="border-2 border-dashed border-white/30 rounded-lg p-4 text-center hover:border-purple-500/50 transition-colors duration-200">
+                  <div className="flex flex-col items-center">
+                    <div className="bg-purple-500/20 rounded-full p-3 mb-3">
+                      <Upload className="w-6 h-6 text-purple-400" />
+                    </div>
+                    <p className="text-white mb-1">Drop your MP3 file here or click to browse</p>
+                    <p className="text-white/60 text-sm mb-3">Maximum file size: 10MB</p>
+                    <input
+                      type="file"
+                      accept=".mp3"
+                      onChange={handleFileSelect}
+                      className="hidden"
+                      id="file-upload"
+                    />
+                    <label
+                      htmlFor="file-upload"
+                      className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-lg cursor-pointer transition-colors duration-200"
+                    >
+                      Choose File
+                    </label>
+                    {selectedFile && (
+                      <p className="text-green-400 text-sm mt-2">
+                        Selected: {selectedFile.name}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Track Metadata Fields */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-white mb-3">Track Information</h3>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="Enter track title"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Artist
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="Enter artist name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Album
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="Enter album name"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Duration
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      placeholder="3:45"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
+                      Year
+                    </label>
+                    <input
+                      type="number"
+                      className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      placeholder="2024"
+                      min="1900"
+                      max="2030"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Genre
+                  </label>
+                  <select className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <option value="">Select genre</option>
+                    <option value="pop">Pop</option>
+                    <option value="rock">Rock</option>
+                    <option value="hip-hop">Hip Hop</option>
+                    <option value="electronic">Electronic</option>
+                    <option value="jazz">Jazz</option>
+                    <option value="classical">Classical</option>
+                    <option value="country">Country</option>
+                    <option value="r&b">R&B</option>
+                    <option value="indie">Indie</option>
+                    <option value="alternative">Alternative</option>
+                    <option value="folk">Folk</option>
+                    <option value="reggae">Reggae</option>
+                    <option value="blues">Blues</option>
+                    <option value="metal">Metal</option>
+                    <option value="punk">Punk</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Audio Features */}
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-white mb-3">Audio Features</h3>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Energy: 75%
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    defaultValue="75"
+                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Danceability: 80%
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    defaultValue="80"
+                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Valence: 65%
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    defaultValue="65"
+                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Popularity: 70%
+                  </label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    defaultValue="70"
+                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                </div>
+              </div>
+
+              <div className="flex space-x-3 mt-4">
+                <button
+                  onClick={() => setShowAddDialog(false)}
+                  className="flex-1 bg-white/10 hover:bg-white/20 text-white py-2 rounded-lg font-medium transition-colors duration-200"
+                >
+                  Cancel
+                </button>
+                <button className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-2 rounded-lg font-medium transition-all duration-200">
+                  Analyse
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      <Footer />
+    </div>
+  );
+}
+
+export default HomePage;
