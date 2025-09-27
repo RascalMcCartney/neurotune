@@ -2163,6 +2163,17 @@ const HomePage: React.FC = () => {
               <p className="text-lg text-gray-300 max-w-4xl mb-2">
                 Explore, analyse, and organise your music collection with powerful tools and insights
               </p>
+        
+        {/* Add Track Button */}
+        <div className="flex items-center justify-end mb-6">
+          <div className="w-[190px]">
+            <AddTrackDropdown 
+              onImportFolder={handleImportFolder}
+              onAddTrack={handleAddTrack}
+            />
+          </div>
+        </div>
+        
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-2xl font-bold text-white">New & Trending</h4>
@@ -2262,14 +2273,6 @@ const HomePage: React.FC = () => {
             <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-slate-900 to-transparent pointer-events-none"></div>
           </div>
         </div>
-            <div className="flex items-center justify-end">
-              <div className="w-[190px]">
-                <AddTrackDropdown 
-                  onImportFolder={handleImportFolder}
-                  onAddTrack={handleAddTrack}
-                />
-              </div>
-            </div>
       </div>
 
       {/* Controls */}
