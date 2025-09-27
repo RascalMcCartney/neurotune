@@ -1804,7 +1804,6 @@ const sampleTracks: Track[] = [
     valence: 0.3,
     popularity: 52,
     imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
-    </div>
   }
 ];
 
@@ -2274,6 +2273,7 @@ const HomePage: React.FC = () => {
             <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-slate-900 to-transparent pointer-events-none"></div>
           </div>
         </div>
+      </div>
       </div>
 
       {/* Controls */}
@@ -2870,6 +2870,6 @@ const HomePage: React.FC = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default HomePage;
