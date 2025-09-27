@@ -2261,11 +2261,6 @@ const HomePage: React.FC = () => {
                   </div>
                 ))}
               </div>
-              {/*             
-            <button className="text-purple-300 hover:text-white text-sm font-medium //transitioncolors duration-200">
-                View All →
-              </button>
-            */}  
             </div>
 
             {/* Gradient Fade Effects */}
