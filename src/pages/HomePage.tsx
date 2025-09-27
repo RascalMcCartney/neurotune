@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Music, Play, Pause, SkipBack, SkipForward, Volume2, Heart, Share2, ChevronLeft, ChevronRight, Upload, X, Search, Filter, Piano, Activity, ArrowUpDown } from 'lucide-react';
+import { Music, Play, Pause, SkipBack, SkipForward, Volume2, Heart, Share2, ChevronLeft, ChevronRight, Upload, X, Search, Filter, Piano, Activity, ArrowUpDown, Zap } from 'lucide-react';
 import FolderManage from '../components/FolderManage';
 import MusicalKeyboard from '../components/MusicalKeyboard';
 import AuthHeader from '../components/AuthHeader';
