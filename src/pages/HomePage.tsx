@@ -2162,8 +2162,6 @@ const HomePage: React.FC = () => {
           </h1>
           <p className="text-lg text-gray-300 max-w-4xl mb-2">
             Explore, analyse, and organise your music collection with powerful tools and insights
-          </p>
-        
         {/* Add Track Button */}
         <div className="w-[190px]">
           <AddTrackDropdown 
@@ -2171,7 +2169,8 @@ const HomePage: React.FC = () => {
             onAddTrack={handleAddTrack}
           />
         </div>
-        
+          </p>
+
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-2xl font-bold text-white">New & Trending</h4>
