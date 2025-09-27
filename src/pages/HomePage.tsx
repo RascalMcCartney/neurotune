@@ -2166,9 +2166,6 @@ const HomePage: React.FC = () => {
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-2xl font-bold text-white">New & Trending</h4>
-            <button className="text-purple-300 hover:text-white text-sm font-medium transition-colors duration-200">
-              View All →
-            </button>
           </div>
           
           <div className="relative">
@@ -2254,6 +2251,9 @@ const HomePage: React.FC = () => {
                 ))}
               </div>
             </div>
+            <button className="text-purple-300 hover:text-white text-sm font-medium transition-colors duration-200">
+              View All →
+            </button>
             
             {/* Gradient Fade Effects */}
             <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-slate-900 to-transparent pointer-events-none"></div>
