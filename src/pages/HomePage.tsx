@@ -2156,11 +2156,11 @@ const HomePage: React.FC = () => {
       <AuthHeader />
 
       {/* New Music Carousel */}
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
               <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
                 Discover Your Sound
               </h1>
-              <p className="text-lg text-gray-300 max-w-2xl mb-2">
+              <p className="text-lg text-gray-300 max-w-3xl mb-2">
                 Explore, analyse, and organise your music collection with powerful tools and insights
               </p>
         
