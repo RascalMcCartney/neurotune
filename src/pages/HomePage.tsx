@@ -2183,19 +2183,33 @@ const HomePage: React.FC = () => {
       <AuthHeader />
 
       {/* New Music Carousel */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-              <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                Discover Your Sound
-              </h1>
-              <p className="text-lg text-gray-300 max-w-4xl mb-2">
-                Explore, analyse, and organise your music collection with powerful tools and insights
-              </p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+<div className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-0 pt-0 pb-6">
+  <div className="flex flex-wrap items-center gap-4">
+    <div>
+      <h1 className="text-3xl lg:text-4xl font-bold text-white mb-1">
+        Discover Your Sound
+      </h1>
+      <p className="text-lg text-gray-300 max-w-3xl mb-0">
+        Explore, analyse, and organise your music collection with powerful tools and insights
+      </p>
+    </div>
+
+    {/* Add Track Button */}
+    <div className="w-[190px] ml-auto">
+      <AddTrackDropdown 
+        onImportFolder={handleImportFolder}
+        onAddTrack={handleAddTrack}
+      />
+    </div>
+  </div>
+</div>
+        
+
+        
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-2xl font-bold text-white">New & Trending</h4>
-            <button className="text-purple-300 hover:text-white text-sm font-medium transition-colors duration-200">
-              View All →
-            </button>
           </div>
           
           <div className="relative">
@@ -2281,24 +2295,16 @@ const HomePage: React.FC = () => {
                 ))}
               </div>
             </div>
-            
+
             {/* Gradient Fade Effects */}
             <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-slate-900 to-transparent pointer-events-none"></div>
             <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-slate-900 to-transparent pointer-events-none"></div>
           </div>
         </div>
-            <div className="flex items-center justify-end">
-              <div className="w-[190px]">
-                <AddTrackDropdown 
-                  onImportFolder={handleImportFolder}
-                  onAddTrack={handleAddTrack}
-                />
-              </div>
-            </div>
       </div>
 
       {/* Controls */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
         <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 mb-6 space-y-4 relative z-10">
           {/* Search Row */}
           <div className="w-full">

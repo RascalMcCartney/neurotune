@@ -115,8 +115,6 @@ const AuthHeader: React.FC = () => {
 
             {/* Auth Section */}
             <div className="flex items-center space-x-4">
-              <span className="text-sm font-medium text-gray-300 hidden lg:inline">Sign in with:</span>
-              
               {/* Social Provider Buttons */}
               <div className="flex items-center space-x-2">
                 {authProviders.map((provider) => (
