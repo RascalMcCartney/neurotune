@@ -2165,13 +2165,11 @@ const HomePage: React.FC = () => {
               </p>
         
         {/* Add Track Button */}
-        <div className="flex items-center justify-end mb-6">
-          <div className="w-[190px]">
-            <AddTrackDropdown 
-              onImportFolder={handleImportFolder}
-              onAddTrack={handleAddTrack}
-            />
-          </div>
+        <div className="w-[190px]">
+          <AddTrackDropdown 
+            onImportFolder={handleImportFolder}
+            onAddTrack={handleAddTrack}
+          />
         </div>
         
         <div className="mb-6">
