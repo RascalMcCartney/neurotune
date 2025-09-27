@@ -2156,7 +2156,7 @@ const HomePage: React.FC = () => {
       <AuthHeader />
 
       {/* New Music Carousel */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
               <h1 className="text-3xl lg:text-4xl font-bold text-white mb-2">
                 Discover Your Sound
               </h1>
@@ -2271,7 +2271,7 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Controls */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
         <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 mb-6 space-y-4 relative z-10">
           {/* Search Row */}
           <div className="w-full">
