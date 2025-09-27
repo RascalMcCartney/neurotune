@@ -107,7 +107,7 @@ const AuthHeader: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <div className="hidden sm:block">
-                  <h1 className="text-xl font-bold text-white">neurotune</h1>
+                  <h1 className="text-xl font-bold text-white">welcome...</h1>
                   <p className="text-xs text-gray-400">Neurotune – From waveform to wonder.</p>
                 </div>
               </div>
