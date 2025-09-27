@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Music, Play, Pause, SkipBack, SkipForward, Volume2, Heart, Share2, ChevronLeft, ChevronRight, Upload, X, Search, Filter, Piano, Activity, ArrowUpDown } from 'lucide-react';
+import { Music, Play, Pause, SkipBack, SkipForward, Volume2, Heart, Share2, ChevronLeft, ChevronRight, Upload, X, Search, Filter, Piano, Activity, ArrowUpDown, Zap } from 'lucide-react';
 import FolderManage from '../components/FolderManage';
 import MusicalKeyboard from '../components/MusicalKeyboard';
 import AuthHeader from '../components/AuthHeader';
@@ -7,9 +7,10 @@ import Footer from '../components/Footer';
 import BPMFilter from '../components/BPMFilter';
 import GenreFilter from '../components/GenreFilter';
 import SortFilter from '../components/SortFilter';
+import AudioFeaturesFilter from '../components/AudioFeaturesFilter';
 import AddTrackDropdown from '../components/AddTrackDropdown';
 import StorageStatus from '../components/StorageStatus';
-import type { Track, TrackOperation, Folder } from '../types/folder';
+import type { Track, TrackOperation, Folder, AudioFeaturesFilters } from '../types/folder';
 
 // Sample data
 const sampleTracks: Track[] = [
@@ -1843,6 +1844,12 @@ const HomePage: React.FC = () => {
   const [showGenreFilter, setShowGenreFilter] = useState(false);
   const [bpmMin, setBpmMin] = useState<number | null>(null);
   const [bpmMax, setBpmMax] = useState<number | null>(null);
+  const [showAudioFeaturesFilter, setShowAudioFeaturesFilter] = useState(false);
+  const [audioFeaturesFilters, setAudioFeaturesFilters] = useState<AudioFeaturesFilters>({
+    energy: null,
+    danceability: null,
+    valence: null
+  });
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   { /* const [showSplash, setShowSplash] = useState(true); */ }
@@ -1995,6 +2002,26 @@ const HomePage: React.FC = () => {
       });
     }
 
+    // Filter by audio features
+    if (audioFeaturesFilters.energy) {
+      filtered = filtered.filter(track => 
+        track.energy >= audioFeaturesFilters.energy!.min / 100 && 
+        track.energy <= audioFeaturesFilters.energy!.max / 100
+      );
+    }
+    if (audioFeaturesFilters.danceability) {
+      filtered = filtered.filter(track => 
+        track.danceability >= audioFeaturesFilters.danceability!.min / 100 && 
+        track.danceability <= audioFeaturesFilters.danceability!.max / 100
+      );
+    }
+    if (audioFeaturesFilters.valence) {
+      filtered = filtered.filter(track => 
+        track.valence >= audioFeaturesFilters.valence!.min / 100 && 
+        track.valence <= audioFeaturesFilters.valence!.max / 100
+      );
+    }
+
     // Sort tracks with multiple criteria
     filtered.sort((a, b) => {
       for (const criteria of sortCriteria) {
@@ -2057,7 +2084,7 @@ const HomePage: React.FC = () => {
 
     setFilteredTracks(filtered);
 
-  }, [tracks, searchTerm, selectedGenre, sortCriteria, selectedMusicalKey, bpmMin, bpmMax]);
+  }, [tracks, searchTerm, selectedGenre, sortCriteria, selectedMusicalKey, bpmMin, bpmMax, audioFeaturesFilters]);
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredTracks.length / tracksPerPage);
@@ -2340,9 +2367,27 @@ const HomePage: React.FC = () => {
                 </span>
               </button>
 
+              {/* Audio Features Filter */}
+              <button
+                onClick={() => setShowAudioFeaturesFilter(true)}
+                className={`flex items-center space-x-2 px-4 py-3 rounded-lg border transition-all duration-200 ${
+                  audioFeaturesFilters.energy || audioFeaturesFilters.danceability || audioFeaturesFilters.valence
+                    ? 'bg-yellow-600 border-yellow-500 text-white'
+                    : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
+                }`}
+              >
+                <Zap className="w-4 h-4" />
+                <span className="text-sm font-medium">
+                  {(audioFeaturesFilters.energy || audioFeaturesFilters.danceability || audioFeaturesFilters.valence)
+                    ? 'Audio Features'
+                    : 'Audio Features'
+                  }
+                </span>
+              </button>
+
             </div>
             
-            {(searchTerm || selectedMusicalKey || selectedFolderId || bpmMin !== null || bpmMax !== null) && (
+            {(searchTerm || selectedMusicalKey || selectedFolderId || bpmMin !== null || bpmMax !== null || audioFeaturesFilters.energy || audioFeaturesFilters.danceability || audioFeaturesFilters.valence) && (
               <button
                 onClick={() => {
                   setSearchTerm('');
@@ -2350,6 +2395,11 @@ const HomePage: React.FC = () => {
                   setSelectedFolderId(null);
                   setBpmMin(null);
                   setBpmMax(null);
+                  setAudioFeaturesFilters({
+                    energy: null,
+                    danceability: null,
+                    valence: null
+                  });
                 }}
                 className="flex items-center px-4 py-2 bg-red-600/20 text-red-400 rounded-lg hover:bg-red-600/30 transition-all duration-200"
               >
@@ -2384,6 +2434,14 @@ const HomePage: React.FC = () => {
         onBPMRangeChange={handleBPMRangeChange}
         currentMinBPM={bpmMin}
         currentMaxBPM={bpmMax}
+      />
+
+      {/* Audio Features Filter Popup */}
+      <AudioFeaturesFilter
+        isOpen={showAudioFeaturesFilter}
+        onClose={() => setShowAudioFeaturesFilter(false)}
+        onFiltersChange={setAudioFeaturesFilters}
+        currentFilters={audioFeaturesFilters}
       />
 
       {/* Sort Filter Popup */}

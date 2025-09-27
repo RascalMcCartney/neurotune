@@ -750,21 +750,21 @@ const AddTrackDialog: React.FC<AddTrackDialogProps> = ({
                                     <AlertCircle className="w-4 h-4 text-red-400" />
                                     <span className="text-red-300 text-sm font-medium">Upload Error:</span>
                                     {/* Analysis Status */}
-                                    {track.analysisStatus && track.uploadStatus === 'success' && (
+                                    {currentTrack.analysisStatus && currentTrack.uploadStatus === 'success' && (
                                       <div className="flex items-center space-x-1 mt-1">
-                                        {track.analysisStatus === 'analyzing' && (
+                                        {currentTrack.analysisStatus === 'analyzing' && (
                                           <>
                                             <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
                                             <span className="text-xs text-blue-400">Analyzing...</span>
                                           </>
                                         )}
-                                        {track.analysisStatus === 'complete' && (
+                                        {currentTrack.analysisStatus === 'complete' && (
                                           <>
                                             <div className="w-2 h-2 bg-green-400 rounded-full" />
                                             <span className="text-xs text-green-400">Analyzed</span>
                                           </>
                                         )}
-                                        {track.analysisStatus === 'error' && (
+                                        {currentTrack.analysisStatus === 'error' && (
                                           <>
                                             <div className="w-2 h-2 bg-red-400 rounded-full" />
                                             <span className="text-xs text-red-400">Analysis failed</span>
