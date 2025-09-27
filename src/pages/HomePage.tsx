@@ -2162,9 +2162,7 @@ const HomePage: React.FC = () => {
               </h1>
               <p className="text-lg text-gray-300 max-w-3xl mb-2">
                 Explore, analyse, and organise your music collection with powerful tools and insights
-              </p>
-        
-        {/* Add Track Button */}
+                        {/* Add Track Button */}
         <div className="flex items-center justify-end mb-6">
           <div className="w-[190px]">
             <AddTrackDropdown 
@@ -2173,6 +2171,9 @@ const HomePage: React.FC = () => {
             />
           </div>
         </div>
+              </p>
+        
+
         
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
