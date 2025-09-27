@@ -1,17 +1,12 @@
-# --- Standard Library Imports ---
-import json
-import logging
-import os
-import re
-import threading
-import time
-import concurrent.futures
-
-# --- Third-Party Library Imports ---
-import httpx
 from openai import OpenAI
-
-# --- Local Application/Library Imports ---
+import os
+import json
+import httpx
+import logging
+import re
+import time
+import threading
+import concurrent.futures
 from app.core.database import save_ai_usage_stat
 
 # Set up logging

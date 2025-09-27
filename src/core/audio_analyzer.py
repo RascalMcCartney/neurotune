@@ -1,23 +1,18 @@
 import numpy as np
-# --- Standard Library Imports ---
-import os
-import tempfile
-import time
-import traceback
-import threading
-import concurrent.futures
-
-# --- Third-Party Library Imports ---
 import librosa
 import librosa.display
-import matplotlib
-matplotlib.use('Agg')  # Set backend before importing pyplot
 import matplotlib.pyplot as plt
-from pydub import AudioSegment
 from scipy import stats
-
-# --- Local Application/Library Imports ---
-from musicTheoryData.key_relationships import get_key_relationship_info
+import os
+from pydub import AudioSegment
+import tempfile
+import matplotlib
+import time  # Add time module for tracking performance
+import traceback  # Add traceback for detailed error logging
+matplotlib.use('Agg')  # Use non-interactive backend
+from .music_theory_data.key_relationships import get_key_relationship_info
+import threading
+import concurrent.futures
 
 def convert_numpy_types(obj):
     """
@@ -2727,5 +2722,15 @@ def get_headphone_speaker_analysis(headphone_score, speaker_score):
 
     if not analysis:
         analysis.append("Good optimization for both headphones and speakers.")
+
+    if __name__ == "__main__":
+        import sys, json
+        file_path = sys.argv[1]
+        is_instrumental = None
+        if len(sys.argv) > 2:
+            is_instrumental = sys.argv[2].lower() in ["true", "1", "yes"]
+
+        result = analyze_mix(file_path, is_instrumental)
+        print(json.dumps(result))
 
     return analysis
