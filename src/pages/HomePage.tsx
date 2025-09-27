@@ -2882,6 +2882,6 @@ const HomePage: React.FC = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default HomePage;
