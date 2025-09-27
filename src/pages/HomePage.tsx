@@ -2156,31 +2156,27 @@ const HomePage: React.FC = () => {
       <AuthHeader />
 
       {/* New Music Carousel */}
+      <div className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-0 pt-6">
+      {/* New Music Carousel */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-{/* New Music Carousel */}
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-  <div className="flex flex-wrap items-center gap-4">
-    <div>
-      <h1 className="text-3xl lg:text-4xl font-bold text-white mb-1">
-        Discover Your Sound
-      </h1>
-      <p className="text-lg text-gray-300 max-w-3xl mb-0">
-        Explore, analyse, and organise your music collection with powerful tools and insights
-      </p>
-    </div>
-
-    {/* Add Track Button */}
-    <div className="w-[190px] ml-auto">
-      <AddTrackDropdown 
-        onImportFolder={handleImportFolder}
-        onAddTrack={handleAddTrack}
-      />
-    </div>
-  </div>
-</div>
-        
-
-        
+        <div className="flex flex-wrap items-center gap-4">
+          <div>
+            <h1 className="text-3xl lg:text-4xl font-bold text-white mb-1">
+              Discover Your Sound
+            </h1>
+            <p className="text-lg text-gray-300 max-w-3xl mb-0">
+              Explore, analyse, and organise your music collection with powerful tools and insights
+            </p>
+          </div>
+      
+          {/* Add Track Button */}
+          <div className="w-[190px] ml-auto">
+            <AddTrackDropdown 
+              onImportFolder={handleImportFolder}
+              onAddTrack={handleAddTrack}
+            />
+          </div>
+        </div>
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-2xl font-bold text-white">New & Trending</h4>
