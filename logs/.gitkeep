@@ -1,0 +1,3 @@
+# This directory contains application log files
+# Log files are automatically rotated and cleaned up
+# Maximum 5 log files, 10MB each
