@@ -168,9 +168,10 @@ const Footer: React.FC = () => {
                 <a href="/terms-of-service" className="hover:text-white transition-colors duration-200">Terms of Service</a>
                 <a href="/about" className="hover:text-white transition-colors duration-200">About</a>
               </div>
-              <p className="text-gray-500 text-sm">
-                © 2025 McCartney Industries Limited. All rights reserved.
-              </p>
+              <div className="flex flex-col md:flex-row items-center space-y-1 md:space-y-0 md:space-x-4 text-gray-500 text-sm">
+                <p>© 2025 McCartney Industries Limited. All rights reserved.</p>
+                <p className="text-xs">v1.2.3</p>
+              </div>
             </div>
           </div>
         </div>
