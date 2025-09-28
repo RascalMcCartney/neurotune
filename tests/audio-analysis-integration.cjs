@@ -11,7 +11,7 @@ const path = require('path');
 // Test configuration
 const TEST_CONFIG = {
   audioFile: 'temp/audio/1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.wav',
-  pythonScript: 'src/audioProcessor/core/audio_analyzer.py',
+  pythonScript: 'src/core/audio_analyzer.py',
   pythonRunner: 'scripts/py-runner.cjs',
   outputFile: 'temp/test-analysis-output.json',
   timeout: 60000 // 1 minute timeout

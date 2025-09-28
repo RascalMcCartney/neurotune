@@ -5,7 +5,7 @@ This package contains data structures and functions related to music theory
 for use in audio analysis and music production contexts.
 """
 
-from ..musicTheoryData.key_relationships import (
+from .music_theory_data.key_relationships import (
     KEYS, 
     MAJOR_KEYS, 
     MINOR_KEYS, 

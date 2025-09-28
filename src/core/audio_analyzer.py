@@ -1,3 +1,12 @@
+import builtins, sys
+
+# Override print so it defaults to stderr
+_builtin_print = print
+def print(*args, **kwargs):
+    if "file" not in kwargs:
+        kwargs["file"] = sys.stderr
+    return _builtin_print(*args, **kwargs)
+
 import numpy as np
 import librosa
 import librosa.display
@@ -10,7 +19,7 @@ import matplotlib
 import time  # Add time module for tracking performance
 import traceback  # Add traceback for detailed error logging
 matplotlib.use('Agg')  # Use non-interactive backend
-from .music_theory_data.key_relationships import get_key_relationship_info
+from music_theory_data.key_relationships import get_key_relationship_info
 import threading
 import concurrent.futures
 
@@ -2723,14 +2732,26 @@ def get_headphone_speaker_analysis(headphone_score, speaker_score):
     if not analysis:
         analysis.append("Good optimization for both headphones and speakers.")
 
-    if __name__ == "__main__":
-        import sys, json
-        file_path = sys.argv[1]
-        is_instrumental = None
-        if len(sys.argv) > 2:
-            is_instrumental = sys.argv[2].lower() in ["true", "1", "yes"]
-
-        result = analyze_mix(file_path, is_instrumental)
-        print(json.dumps(result))
-
     return analysis
+
+if __name__ == "__main__":
+    import sys, json, traceback
+
+    if len(sys.argv) < 3:
+        print("Usage: python -m audio_analyzer <file_path> <is_instrumental>")
+        sys.exit(1)
+
+    file_path = sys.argv[1]
+    is_instrumental = sys.argv[2].lower() in ("true", "1", "yes")
+
+    try:
+        result = analyze_mix(file_path, is_instrumental)
+        # Force JSON to stdout for Node to capture
+        sys.__stdout__.write(json.dumps(result) + "\n")
+    except Exception as e:
+        error_info = {
+            "error": str(e),
+            "traceback": traceback.format_exc()
+        }
+        sys.__stdout__.write(json.dumps(error_info) + "\n")
+        sys.exit(1)
