@@ -2209,15 +2209,6 @@ const HomePage: React.FC = () => {
     setCurrentPage(1);
   }, [searchTerm, selectedGenre]);
 
-  const handlePlay = (track: Track) => {
-    if (currentTrack?.id === track.id) {
-      setIsPlaying(!isPlaying);
-    } else {
-      setCurrentTrack(track);
-      setIsPlaying(true);
-    }
-  };
-
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -2779,51 +2770,6 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Now Playing Bar */}
-      {currentTrack && (
-        <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-white/20 p-4">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <img
-                src={currentTrack.imageUrl}
-                alt={currentTrack.title}
-                className="w-12 h-12 rounded-lg object-cover"
-              />
-              <div>
-                <h4 className="text-white font-medium">{currentTrack.title}</h4>
-                <p className="text-white/60 text-sm">{currentTrack.artist}</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <button className="text-white/60 hover:text-white transition-colors duration-200">
-                <SkipBack className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="bg-white text-black rounded-full p-2 hover:bg-white/90 transition-colors duration-200"
-              >
-                {isPlaying ? (
-                  <Pause className="w-5 h-5" />
-                ) : (
-                  <Play className="w-5 h-5" />
-                )}
-              </button>
-              <button className="text-white/60 hover:text-white transition-colors duration-200">
-                <SkipForward className="w-5 h-5" />
-              </button>
-            </div>
-            
-            <div className="flex items-center space-x-2">
-              <Volume2 className="w-5 h-5 text-white/60" />
-              <div className="w-24 bg-white/20 rounded-full h-1">
-                <div className="bg-white h-1 rounded-full w-3/4"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Add & Analyse Dialog */}
       {showAddDialog && (
