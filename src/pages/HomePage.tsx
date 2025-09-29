@@ -1955,7 +1955,6 @@ interface Track {
 const HomePage: React.FC = () => {
   const [tracks] = useState<Track[]>(sampleTracks);
   const [filteredTracks, setFilteredTracks] = useState<Track[]>(sampleTracks);
-  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('');
