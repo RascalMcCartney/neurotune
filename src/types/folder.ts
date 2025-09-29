@@ -26,6 +26,8 @@ export interface Track {
   file_path?: string;
   created_at?: string;
   selected?: boolean;
+  audioFile?: string;
+  artwork?: string;
 }
 
 export interface TrackOperation {

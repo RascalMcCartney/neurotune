@@ -4,6 +4,9 @@ import FolderManage from '../components/FolderManage';
 import MusicalKeyboard from '../components/MusicalKeyboard';
 import AuthHeader from '../components/AuthHeader';
 import Footer from '../components/Footer';
+import AudioPlayer from '../components/AudioPlayer';
+import PlayButton from '../components/PlayButton';
+import { useAudioPlayer } from '../hooks/useAudioPlayer';
 import BPMFilter from '../components/BPMFilter';
 import GenreFilter from '../components/GenreFilter';
 import SortFilter from '../components/SortFilter';
@@ -1851,6 +1854,8 @@ const sampleTracks: Track[] = [
     audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
+    audioFile: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', // Demo audio file
+    artwork: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300',
     id: 109,
     title: "Progressive Trance",
     artist: "Uplifting Spirits",
@@ -1864,6 +1869,8 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.8,
     popularity: 82,
+    audioFile: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', // Demo audio file
+    artwork: 'https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300',
     imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
     audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
@@ -1877,6 +1884,8 @@ const sampleTracks: Track[] = [
     year: 2021,
     bpm: 45,
     key: "F Minor",
+    audioFile: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', // Demo audio file
+    artwork: 'https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300',
     energy: 0.6,
     danceability: 0.1,
     valence: 0.2,
@@ -1890,6 +1899,8 @@ const sampleTracks: Track[] = [
     artist: "Disco Future",
     album: "Retro Tomorrow",
     duration: "3:44",
+    audioFile: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', // Demo audio file
+    artwork: 'https://images.pexels.com/photos/1699030/pexels-photo-1699030.jpeg?auto=compress&cs=tinysrgb&w=300',
     genre: "Future Funk",
     year: 2023,
     bpm: 115,
@@ -1903,6 +1914,8 @@ const sampleTracks: Track[] = [
   },
   {
     id: 112,
+    audioFile: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', // Demo audio file
+    artwork: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300',
     title: "Atmospheric Black Metal",
     artist: "Winter Forest",
     album: "Frozen Landscapes",
@@ -1916,6 +1929,8 @@ const sampleTracks: Track[] = [
     valence: 0.3,
     popularity: 52,
     imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.wav', // Demo audio file
+    artwork: 'https://images.pexels.com/photos/1434819/pexels-photo-1434819.jpeg?auto=compress&cs=tinysrgb&w=300',
     audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   }
 ];
@@ -1962,6 +1977,9 @@ const HomePage: React.FC = () => {
     danceability: null,
     valence: null
   });
+  
+  // Audio player state
+  const { currentTrack, isPlayerVisible, playTrack, closePlayer, nextTrack, previousTrack } = useAudioPlayer(filteredTracks);
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   { /* const [showSplash, setShowSplash] = useState(true); */ }
@@ -2328,7 +2346,7 @@ const HomePage: React.FC = () => {
                   <div key={track.id} className="flex-none w-64 bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 hover:border-purple-500/50 transition-all duration-300 group hover:transform hover:scale-105">
                     <div className="relative">
                       <img
-                        src={track.imageUrl}
+                        src={track.artwork || `https://images.pexels.com/photos/${1000000 + parseInt(track.id)}/${1000000 + parseInt(track.id)}.jpeg?auto=compress&cs=tinysrgb&w=300`}
                         alt={track.title}
                         className="w-full h-36 object-cover"
                       />
@@ -2964,6 +2982,15 @@ const HomePage: React.FC = () => {
         </div>
       )}
       <Footer />
+      
+      {/* Audio Player */}
+      <AudioPlayer
+        track={currentTrack}
+        isVisible={isPlayerVisible}
+        onClose={closePlayer}
+        onNext={nextTrack}
+        onPrevious={previousTrack}
+      />
     </div>
   );
 }
