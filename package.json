@@ -11,11 +11,8 @@
     "install:all": "npm install && node scripts/py-runner.cjs --check-env",
     "py:run": "node scripts/py-runner.cjs",
     "check-python": "python3 -c \"import librosa, numpy, scipy; print('Python environment ready for audio analysis')\"",
-    "test:audio": "node test/audio-analysis-integration.cjs",
-    "test:audio:quick": "node test/quick-audio-test.cjs",
-    "bootstrap": "ts-node scripts/bootstrap.ts",
-    "clean": "ts-node scripts/clean.ts",
-    "env:status": "ts-node scripts/status.ts"
+    "test:audio": "node test/audio-analysis-integration.js",
+    "test:audio:quick": "node test/quick-audio-test.js"
   },
   "dependencies": {
     "@azure/storage-blob": "^12.28.0",
@@ -38,8 +35,7 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2",
+    "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2"
   }

@@ -2,12 +2,6 @@ import fs from "fs";
 import path from "path";
 
 export default {
-  server: {
-    fs: {
-      allow: ['..']
-    }
-  },
-  publicDir: 'public',
   plugins: [
     {
       name: "write-port",
