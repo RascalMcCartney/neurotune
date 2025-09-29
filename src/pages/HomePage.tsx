@@ -1,26 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { 
-  Search, 
-  Filter, 
-  Music, 
-  ArrowUpDown, 
-  Heart, 
-  Share2, 
-  MoreVertical,
-  Clock,
-  User,
-  Disc,
-  Calendar,
-  Hash,
-  Activity,
-  Key,
-  Zap,
-  Target,
-  Plus,
-  Grid3X3,
-  List,
-  Eye
-} from 'lucide-react';
+import { Search, Filter, Music, ArrowUpDown, Heart, Share2, MoreVertical, Clock, User, Disc, Calendar, Hash, Activity, Key, Zap, Target, Plus, Grid3x3 as Grid3X3, List, Eye } from 'lucide-react';
 import AuthHeader from '../components/AuthHeader';
 import Footer from '../components/Footer';
 import AddTrackDropdown from '../components/AddTrackDropdown';
