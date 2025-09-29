@@ -2338,16 +2338,6 @@ const HomePage: React.FC = () => {
                         </span>
                       </div>
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <button
-                          onClick={() => handlePlay(track)}
-                          className="bg-white/20 backdrop-blur-sm rounded-full p-3 hover:bg-white/30 transition-colors duration-200"
-                        >
-                          {currentTrack?.id === track.id && isPlaying ? (
-                            <Pause className="w-6 h-6 text-white" />
-                          ) : (
-                            <Play className="w-6 h-6 text-white" />
-                          )}
-                        </button>
                       </div>
                     </div>
                     
