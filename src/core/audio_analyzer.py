@@ -19,7 +19,7 @@ import matplotlib
 import time  # Add time module for tracking performance
 import traceback  # Add traceback for detailed error logging
 matplotlib.use('Agg')  # Use non-interactive backend
-from music_theory_data.key_relationships import get_key_relationship_info
+from .music_theory_data.key_relationships import get_key_relationship_info
 import threading
 import concurrent.futures
 
@@ -145,15 +145,30 @@ def analyze_mix(file_path, is_instrumental=None):
     }
     
     try:
+        from pathlib import Path
+
+        # Get the absolute path to the current script
+        current_file = Path(__file__).resolve()
+
+        # Navigate to the root directory
+        root_dir = current_file.parents[2]  # <root> is two levels up from <root>/src/core/
+
+        # Construct the path to the audio file
+        audio_file = root_dir / "temp" / "audio" / "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
+
+        # Optional: check if the file exists
+        if not audio_file.exists():
+            raise FileNotFoundError(f"Audio file not found at {audio_file}")
+
         print(f"\n{'='*50}")
-        print(f"STARTING ANALYSIS: {file_path}")
+        print(f"STARTING ANALYSIS: {audio_file}")
         print(f"Is instrumental: {is_instrumental}")
         print(f"{'='*50}\n")
         
         # Step 1: Load audio file
-        print(f"Loading audio file for analysis: {file_path}")
+        print(f"Loading audio file for analysis: {audio_file}")
         load_start = time.time()
-        y, sr = librosa.load(file_path, sr=None, mono=False)
+        y, sr = librosa.load(audio_file, sr=None, mono=False)
         print(f"Audio loaded in {time.time() - load_start:.2f} seconds")
         print(f"Sample rate: {sr} Hz")
         
@@ -1253,11 +1268,12 @@ def analyze_harmonic_content(y, sr):
         
         # Convert to mono if needed
         y_mono = np.mean(y, axis=0) if y.ndim > 1 else y
-        
+        print("Key calculation...")
         # Compute chromagram - remove n_chroma parameter which is causing issues
         hop_length = 512  # Default hop length
         chroma = librosa.feature.chroma_cqt(y=y_mono, sr=sr, hop_length=hop_length)
-        
+        print("Key calculation complete!")
+
         # Compute key using the chromagram
         key_indices = np.sum(chroma, axis=1)
         key_index = np.argmax(key_indices)
