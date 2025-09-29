@@ -2618,8 +2618,6 @@ const HomePage: React.FC = () => {
                       className="w-full h-48 object-cover"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <button
-                      </button>
                     </div>
                   </div>
                   
