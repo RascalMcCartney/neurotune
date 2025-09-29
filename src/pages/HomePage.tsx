@@ -28,7 +28,8 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.7,
     popularity: 85,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 2,
@@ -44,7 +45,8 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.6,
     popularity: 72,
-    imageUrl: "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 3,
@@ -60,7 +62,8 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.5,
     popularity: 91,
-    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 4,
@@ -76,7 +79,8 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.8,
     popularity: 68,
-    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 5,
@@ -92,7 +96,8 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.4,
     popularity: 79,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 6,
@@ -108,7 +113,8 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.7,
     popularity: 64,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 7,
@@ -124,7 +130,8 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.6,
     popularity: 82,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 8,
@@ -140,7 +147,8 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.5,
     popularity: 58,
-    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 9,
@@ -156,7 +164,8 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.9,
     popularity: 87,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 10,
@@ -172,7 +181,8 @@ const sampleTracks: Track[] = [
     danceability: 0.1,
     valence: 0.8,
     popularity: 71,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 11,
@@ -188,7 +198,8 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.6,
     popularity: 93,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 12,
@@ -204,7 +215,8 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.9,
     popularity: 75,
-    imageUrl: "https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 13,
@@ -220,7 +232,8 @@ const sampleTracks: Track[] = [
     danceability: 0.65,
     valence: 0.4,
     popularity: 78,
-    imageUrl: "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 14,
@@ -236,7 +249,8 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.85,
     popularity: 82,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 15,
@@ -252,7 +266,8 @@ const sampleTracks: Track[] = [
     danceability: 0.55,
     valence: 0.6,
     popularity: 88,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 16,
@@ -268,7 +283,8 @@ const sampleTracks: Track[] = [
     danceability: 0.2,
     valence: 0.7,
     popularity: 65,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 17,
@@ -284,7 +300,8 @@ const sampleTracks: Track[] = [
     danceability: 0.92,
     valence: 0.8,
     popularity: 91,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 18,
@@ -300,7 +317,8 @@ const sampleTracks: Track[] = [
     danceability: 0.45,
     valence: 0.6,
     popularity: 69,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 19,
@@ -316,7 +334,8 @@ const sampleTracks: Track[] = [
     danceability: 0.75,
     valence: 0.9,
     popularity: 73,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 20,
@@ -332,7 +351,8 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.3,
     popularity: 77,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 21,
@@ -348,7 +368,8 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.55,
     popularity: 62,
-    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 22,
@@ -364,7 +385,8 @@ const sampleTracks: Track[] = [
     danceability: 0.88,
     valence: 0.7,
     popularity: 86,
-    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 23,
@@ -380,7 +402,8 @@ const sampleTracks: Track[] = [
     danceability: 0.35,
     valence: 0.8,
     popularity: 71,
-    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 24,
@@ -396,9 +419,10 @@ const sampleTracks: Track[] = [
     danceability: 0.85,
     valence: 0.6,
     popularity: 89,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
-  },
-  {
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",     
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
+   },
+   {
     id: 25,
     title: "Velvet Voice",
     artist: "Smooth Jazz Collective",
@@ -412,10 +436,11 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.65,
     popularity: 68,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
-    id: 26,
+     id: 26,
     title: "Digital Horizon",
     artist: "Future Waves",
     album: "Cyber Dreams",
@@ -428,7 +453,8 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.65,
     popularity: 81,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 27,
@@ -444,10 +470,11 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.75,
     popularity: 64,
-    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
-    id: 28,
+     id: 28,
     title: "Groove Machine",
     artist: "Funk Factory",
     album: "Get Down",
@@ -460,7 +487,8 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.85,
     popularity: 84,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
   {
     id: 29,
@@ -492,9 +520,10 @@ const sampleTracks: Track[] = [
     danceability: 0.85,
     valence: 0.8,
     popularity: 87,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 31,
     title: "Rainy Day Blues",
     artist: "Storm Chasers",
@@ -508,9 +537,10 @@ const sampleTracks: Track[] = [
     danceability: 0.45,
     valence: 0.35,
     popularity: 66,
-    imageUrl: "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=300"
-  },
-  {
+    imageUrl: "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
+  }},
+  }{
     id: 32,
     title: "Sunset Drive",
     artist: "Highway Dreams",
@@ -524,9 +554,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.8,
     popularity: 79,
-    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 33,
     title: "Techno Paradise",
     artist: "Digital Underground",
@@ -540,9 +571,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.7,
     popularity: 85,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 34,
     title: "Gentle Rain",
     artist: "Nature Sounds",
@@ -556,9 +588,10 @@ const sampleTracks: Track[] = [
     danceability: 0.1,
     valence: 0.6,
     popularity: 52,
-    imageUrl: "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 35,
     title: "Hip Hop Nation",
     artist: "Street Poets",
@@ -572,9 +605,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.6,
     popularity: 88,
-    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 36,
     title: "Classical Fusion",
     artist: "Modern Orchestra",
@@ -588,9 +622,10 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.5,
     popularity: 63,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 37,
     title: "Reggae Sunshine",
     artist: "Island Vibes",
@@ -604,9 +639,10 @@ const sampleTracks: Track[] = [
     danceability: 0.75,
     valence: 0.9,
     popularity: 76,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 38,
     title: "Midnight Express",
     artist: "Night Train",
@@ -620,9 +656,10 @@ const sampleTracks: Track[] = [
     danceability: 0.65,
     valence: 0.45,
     popularity: 72,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 39,
     title: "Cosmic Dance",
     artist: "Space Disco",
@@ -636,9 +673,10 @@ const sampleTracks: Track[] = [
     danceability: 0.95,
     valence: 0.9,
     popularity: 83,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 40,
     title: "Forest Whispers",
     artist: "Earth Sounds",
@@ -652,9 +690,10 @@ const sampleTracks: Track[] = [
     danceability: 0.15,
     valence: 0.75,
     popularity: 48,
-    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 41,
     title: "Punk Revolution",
     artist: "Rebel Youth",
@@ -668,9 +707,10 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.8,
     popularity: 74,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 42,
     title: "Smooth Operator",
     artist: "Silk Road",
@@ -684,9 +724,10 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.7,
     popularity: 80,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 43,
     title: "Trance State",
     artist: "Mind Bender",
@@ -700,9 +741,10 @@ const sampleTracks: Track[] = [
     danceability: 0.85,
     valence: 0.75,
     popularity: 82,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 44,
     title: "Country Roads",
     artist: "Backwood Boys",
@@ -716,9 +758,10 @@ const sampleTracks: Track[] = [
     danceability: 0.65,
     valence: 0.8,
     popularity: 67,
-    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 45,
     title: "Metal Storm",
     artist: "Iron Thunder",
@@ -732,9 +775,10 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.4,
     popularity: 78,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 46,
     title: "Lofi Study",
     artist: "Chill Beats",
@@ -748,9 +792,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.6,
     popularity: 85,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 47,
     title: "Salsa Fire",
     artist: "Latin Heat",
@@ -764,9 +809,10 @@ const sampleTracks: Track[] = [
     danceability: 0.95,
     valence: 0.9,
     popularity: 79,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 48,
     title: "Indie Dreams",
     artist: "Bedroom Pop",
@@ -780,9 +826,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.75,
     popularity: 73,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 49,
     title: "House Party",
     artist: "DJ Groove",
@@ -796,9 +843,10 @@ const sampleTracks: Track[] = [
     danceability: 0.92,
     valence: 0.85,
     popularity: 89,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 50,
     title: "Orchestral Epic",
     artist: "Symphony Hall",
@@ -812,9 +860,10 @@ const sampleTracks: Track[] = [
     danceability: 0.2,
     valence: 0.6,
     popularity: 61,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 51,
     title: "Trap Beat",
     artist: "Street Sound",
@@ -828,9 +877,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.65,
     popularity: 86,
-    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 52,
     title: "Bossa Nova Sunset",
     artist: "Rio Nights",
@@ -844,9 +894,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.8,
     popularity: 69,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 53,
     title: "Synthpop Revival",
     artist: "Neon Nights",
@@ -860,9 +911,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.7,
     popularity: 81,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 54,
     title: "Grunge Anthem",
     artist: "Flannel Shirt",
@@ -876,9 +928,10 @@ const sampleTracks: Track[] = [
     danceability: 0.55,
     valence: 0.5,
     popularity: 75,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 55,
     title: "Meditation Flow",
     artist: "Inner Peace",
@@ -892,9 +945,10 @@ const sampleTracks: Track[] = [
     danceability: 0.05,
     valence: 0.8,
     popularity: 44,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 56,
     title: "Afrobeat Rhythm",
     artist: "Lagos Groove",
@@ -908,9 +962,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.85,
     popularity: 77,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 57,
     title: "Drum & Bass Rush",
     artist: "Liquid Motion",
@@ -924,9 +979,10 @@ const sampleTracks: Track[] = [
     danceability: 0.85,
     valence: 0.7,
     popularity: 84,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 58,
     title: "Folk Tale",
     artist: "Storyteller",
@@ -940,9 +996,10 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.7,
     popularity: 58,
-    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 59,
     title: "Garage Beat",
     artist: "Underground UK",
@@ -956,9 +1013,10 @@ const sampleTracks: Track[] = [
     danceability: 0.88,
     valence: 0.75,
     popularity: 76,
-    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 60,
     title: "Psychedelic Journey",
     artist: "Mind Expansion",
@@ -972,9 +1030,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.6,
     popularity: 65,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 61,
     title: "Minimal Techno",
     artist: "Berlin Underground",
@@ -988,9 +1047,10 @@ const sampleTracks: Track[] = [
     danceability: 0.85,
     valence: 0.5,
     popularity: 72,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 62,
     title: "Gospel Choir",
     artist: "Heavenly Voices",
@@ -1004,9 +1064,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.9,
     popularity: 63,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 63,
     title: "Breakbeat Madness",
     artist: "Rhythm Breaker",
@@ -1020,9 +1081,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.7,
     popularity: 74,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 64,
     title: "Celtic Winds",
     artist: "Highland Mist",
@@ -1036,9 +1098,10 @@ const sampleTracks: Track[] = [
     danceability: 0.45,
     valence: 0.65,
     popularity: 56,
-    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 65,
     title: "Future Bass Drop",
     artist: "Bass Future",
@@ -1052,9 +1115,10 @@ const sampleTracks: Track[] = [
     danceability: 0.85,
     valence: 0.8,
     popularity: 88,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 66,
     title: "Swing Time",
     artist: "Big Band Revival",
@@ -1068,9 +1132,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.85,
     popularity: 68,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 67,
     title: "Hardstyle Anthem",
     artist: "Hard Energy",
@@ -1084,9 +1149,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.75,
     popularity: 81,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 68,
     title: "Ambient Space",
     artist: "Void Explorer",
@@ -1100,9 +1166,10 @@ const sampleTracks: Track[] = [
     danceability: 0.1,
     valence: 0.6,
     popularity: 47,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 69,
     title: "Ska Punk Energy",
     artist: "Brass Rebellion",
@@ -1116,9 +1183,10 @@ const sampleTracks: Track[] = [
     danceability: 0.85,
     valence: 0.9,
     popularity: 73,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 70,
     title: "Chillwave Sunset",
     artist: "Retro Dreams",
@@ -1132,9 +1200,10 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.75,
     popularity: 71,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 71,
     title: "Industrial Noise",
     artist: "Machine Works",
@@ -1148,9 +1217,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.3,
     popularity: 64,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 72,
     title: "Bluegrass Picking",
     artist: "Mountain String Band",
@@ -1164,9 +1234,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.8,
     popularity: 59,
-    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 73,
     title: "Vaporwave Aesthetic",
     artist: "Neon Mall",
@@ -1180,9 +1251,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.6,
     popularity: 67,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 74,
     title: "Post Rock Epic",
     artist: "Instrumental Collective",
@@ -1196,9 +1268,10 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.5,
     popularity: 62,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 75,
     title: "Dancehall Vibes",
     artist: "Kingston Sound",
@@ -1212,9 +1285,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.85,
     popularity: 83,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 76,
     title: "Shoegaze Dream",
     artist: "Reverb Cloud",
@@ -1228,9 +1302,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.45,
     popularity: 58,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 77,
     title: "Electro Swing",
     artist: "Vintage Electric",
@@ -1244,9 +1319,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.9,
     popularity: 79,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 78,
     title: "Doom Metal",
     artist: "Heavy Darkness",
@@ -1260,9 +1336,10 @@ const sampleTracks: Track[] = [
     danceability: 0.2,
     valence: 0.2,
     popularity: 61,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 79,
     title: "Tropical House",
     artist: "Island Beats",
@@ -1276,9 +1353,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.9,
     popularity: 85,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 80,
     title: "Noise Rock",
     artist: "Sonic Chaos",
@@ -1292,9 +1370,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.3,
     popularity: 55,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 81,
     title: "Smooth Jazz",
     artist: "Midnight Saxophone",
@@ -1308,9 +1387,10 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.7,
     popularity: 66,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 82,
     title: "Glitch Hop",
     artist: "Digital Glitch",
@@ -1324,9 +1404,10 @@ const sampleTracks: Track[] = [
     danceability: 0.75,
     valence: 0.6,
     popularity: 72,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 83,
     title: "Mongolian Folk",
     artist: "Steppe Riders",
@@ -1340,9 +1421,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.6,
     popularity: 51,
-    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1624496/pexels-photo-1624496.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 84,
     title: "Neurofunk Bass",
     artist: "Brain Frequency",
@@ -1356,9 +1438,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.5,
     popularity: 69,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 85,
     title: "Emo Revival",
     artist: "Heartbreak Hotel",
@@ -1372,9 +1455,10 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.3,
     popularity: 68,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 86,
     title: "Flamenco Guitar",
     artist: "Spanish Fire",
@@ -1388,9 +1472,10 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.75,
     popularity: 63,
-    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 87,
     title: "Liquid DnB",
     artist: "Smooth Flow",
@@ -1404,9 +1489,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.8,
     popularity: 76,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 88,
     title: "Math Rock",
     artist: "Complex Time",
@@ -1420,9 +1506,10 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.5,
     popularity: 57,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 89,
     title: "Synthfunk Groove",
     artist: "Retro Funk",
@@ -1436,9 +1523,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.85,
     popularity: 78,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 90,
     title: "Dark Ambient",
     artist: "Shadow Realm",
@@ -1452,9 +1540,10 @@ const sampleTracks: Track[] = [
     danceability: 0.05,
     valence: 0.2,
     popularity: 42,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 91,
     title: "Kawaii Future Bass",
     artist: "Cute Beats",
@@ -1468,9 +1557,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.95,
     popularity: 81,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 92,
     title: "Stoner Rock",
     artist: "Desert Highway",
@@ -1484,9 +1574,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.6,
     popularity: 64,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 93,
     title: "Acid House",
     artist: "303 Machine",
@@ -1500,9 +1591,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.7,
     popularity: 74,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 94,
     title: "Blackgaze",
     artist: "Ethereal Darkness",
@@ -1516,9 +1608,10 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.4,
     popularity: 56,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 95,
     title: "Phonk Beat",
     artist: "Memphis Sound",
@@ -1532,9 +1625,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.5,
     popularity: 79,
-    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 96,
     title: "Witch House",
     artist: "Occult Synth",
@@ -1548,9 +1642,10 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.3,
     popularity: 58,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 97,
     title: "Melodic Dubstep",
     artist: "Emotional Bass",
@@ -1564,9 +1659,10 @@ const sampleTracks: Track[] = [
     danceability: 0.75,
     valence: 0.8,
     popularity: 86,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 98,
     title: "Power Metal",
     artist: "Dragon Force",
@@ -1580,9 +1676,10 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.8,
     popularity: 71,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 99,
     title: "Chillstep",
     artist: "Peaceful Bass",
@@ -1596,9 +1693,10 @@ const sampleTracks: Track[] = [
     danceability: 0.5,
     valence: 0.75,
     popularity: 73,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 100,
     title: "Speedcore",
     artist: "Extreme BPM",
@@ -1612,9 +1710,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.7,
     popularity: 62,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 101,
     title: "Ambient Dub",
     artist: "Echo Chamber",
@@ -1628,9 +1727,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.65,
     popularity: 54,
-    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 102,
     title: "Garage Punk",
     artist: "Raw Energy",
@@ -1644,9 +1744,10 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.75,
     popularity: 67,
-    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 103,
     title: "Synthpop Ballad",
     artist: "Neon Hearts",
@@ -1660,9 +1761,10 @@ const sampleTracks: Track[] = [
     danceability: 0.6,
     valence: 0.8,
     popularity: 75,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 104,
     title: "Brutal Death Metal",
     artist: "Extreme Chaos",
@@ -1676,9 +1778,10 @@ const sampleTracks: Track[] = [
     danceability: 0.3,
     valence: 0.1,
     popularity: 53,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 105,
     title: "Lounge Jazz",
     artist: "Cocktail Hour",
@@ -1692,9 +1795,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.7,
     popularity: 61,
-    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 106,
     title: "Experimental Electronic",
     artist: "Sound Laboratory",
@@ -1708,9 +1812,10 @@ const sampleTracks: Track[] = [
     danceability: 0.4,
     valence: 0.5,
     popularity: 49,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 107,
     title: "Surf Rock",
     artist: "Beach Riders",
@@ -1724,9 +1829,10 @@ const sampleTracks: Track[] = [
     danceability: 0.65,
     valence: 0.85,
     popularity: 69,
-    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1738986/pexels-photo-1738986.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 108,
     title: "Darksynth",
     artist: "Neon Nightmare",
@@ -1740,9 +1846,10 @@ const sampleTracks: Track[] = [
     danceability: 0.7,
     valence: 0.4,
     popularity: 76,
-    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1694900/pexels-photo-1694900.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 109,
     title: "Progressive Trance",
     artist: "Uplifting Spirits",
@@ -1756,9 +1863,10 @@ const sampleTracks: Track[] = [
     danceability: 0.8,
     valence: 0.8,
     popularity: 82,
-    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 110,
     title: "Drone Metal",
     artist: "Infinite Sustain",
@@ -1772,9 +1880,10 @@ const sampleTracks: Track[] = [
     danceability: 0.1,
     valence: 0.2,
     popularity: 38,
-    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 111,
     title: "Future Funk",
     artist: "Disco Future",
@@ -1788,9 +1897,10 @@ const sampleTracks: Track[] = [
     danceability: 0.9,
     valence: 0.9,
     popularity: 84,
-    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300"
+    imageUrl: "https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=300",
+    audioFile: "1758961239205_29f7ac1b-3eb5-499c-a137-f37bfd90144f.mp3"
   },
-  {
+  }{
     id: 112,
     title: "Atmospheric Black Metal",
     artist: "Winter Forest",
