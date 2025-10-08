@@ -480,7 +480,7 @@ const HomePage: React.FC = () => {
       <div className="flex">
         {/* Sidebar - Folder Management */}
         <div className="w-80 flex-shrink-0 h-screen sticky top-16 overflow-hidden">
-          <div className="h-full p-6">
+          <div className="h-full p-6 bg-gray-700">
             <FolderManage 
               selectedFolderId={selectedFolderId}
               onFolderSelect={setSelectedFolderId}
