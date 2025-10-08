@@ -267,7 +267,7 @@ const HomePage: React.FC = () => {
 
         {/* Musical Key Badge */}
         {track.key && (
-          <div className="absolute top-3 left-3 bg-white px-3 py-1.5 rounded-lg shadow-lg">
+          <div className="absolute top-3 right-3 bg-white px-3 py-1.5 rounded-lg shadow-lg">
             <span className="text-black font-semibold text-sm">{track.key}</span>
           </div>
         )}
