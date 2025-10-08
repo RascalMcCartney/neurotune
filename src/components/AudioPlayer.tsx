@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Play, Pause, SkipForward, SkipBack, Volume2, VolumeX, Music } from 'lucide-react';
+import { Play, Pause, SkipForward, SkipBack, Volume2, VolumeX, Music, X } from 'lucide-react';
 import { useAudio } from '../contexts/AudioContext';
 
 const AudioPlayer: React.FC = () => {
@@ -14,6 +14,7 @@ const AudioPlayer: React.FC = () => {
     setVolume,
     skipForward,
     skipBackward,
+    stopPlayback,
   } = useAudio();
 
   const [isMuted, setIsMuted] = useState(false);
@@ -57,7 +58,16 @@ const AudioPlayer: React.FC = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-deep-blue-900 via-gray-900 to-deep-blue-900 border-t border-gold-600/30 shadow-2xl z-50">
       <div className="px-6 py-4">
-        <div className="flex items-center justify-between gap-6">
+        <div className="flex items-center justify-between gap-6 relative">
+          {/* Close Button */}
+          <button
+            onClick={stopPlayback}
+            className="absolute -top-2 left-0 w-8 h-8 bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white rounded-full flex items-center justify-center transition-all duration-200 border border-gray-700 hover:border-gold-500 shadow-lg"
+            aria-label="Close player"
+          >
+            <X className="w-4 h-4" />
+          </button>
+
           {/* Track Info */}
           <div className="flex items-center space-x-4 flex-1 min-w-0">
             <div className="w-14 h-14 rounded-lg overflow-hidden bg-gradient-to-br from-gray-600 to-gray-800 flex-shrink-0">

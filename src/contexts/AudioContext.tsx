@@ -22,6 +22,7 @@ interface AudioContextType {
   setVolume: (volume: number) => void;
   skipForward: () => void;
   skipBackward: () => void;
+  stopPlayback: () => void;
 }
 
 const AudioContext = createContext<AudioContextType | undefined>(undefined);
@@ -113,6 +114,15 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     audioRef.current.currentTime = Math.max(audioRef.current.currentTime - 10, 0);
   };
 
+  const stopPlayback = () => {
+    if (!audioRef.current) return;
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    setIsPlaying(false);
+    setCurrentTrack(null);
+    setCurrentTime(0);
+  };
+
   return (
     <AudioContext.Provider
       value={{
@@ -127,6 +137,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setVolume,
         skipForward,
         skipBackward,
+        stopPlayback,
       }}
     >
       {children}
