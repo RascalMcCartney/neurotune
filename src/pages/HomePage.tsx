@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Search, Filter, Music, ArrowUpDown, Heart, Share2, MoreVertical, Clock, User, Disc, Calendar, Hash, Activity, Key, Zap, Target, Plus, Grid3x3 as Grid3X3, List, Eye } from 'lucide-react';
+import { Search, Filter, Music, ArrowUpDown, Heart, Share2, MoreVertical, Clock, User, Disc, Calendar, Hash, Activity, Key, Zap, Target, Plus, Grid3x3 as Grid3X3, List, Eye, Play, Pause } from 'lucide-react';
 import AuthHeader from '../components/AuthHeader';
 import Footer from '../components/Footer';
 import AddTrackDropdown from '../components/AddTrackDropdown';
@@ -10,6 +10,7 @@ import MusicalKeyboard from '../components/MusicalKeyboard';
 import AudioFeaturesFilter from '../components/AudioFeaturesFilter';
 import SortFilter from '../components/SortFilter';
 import StorageStatus from '../components/StorageStatus';
+import { useAudio } from '../contexts/AudioContext';
 import type { Track, Folder, AudioFeaturesFilters } from '../types/folder';
 
 interface SortCriteria {
@@ -19,6 +20,8 @@ interface SortCriteria {
 }
 
 const HomePage: React.FC = () => {
+  const { playTrack, currentTrack, isPlaying } = useAudio();
+
   // State management
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All Genres');
@@ -33,14 +36,14 @@ const HomePage: React.FC = () => {
     { field: 'title', direction: 'asc', priority: 1 }
   ]);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-  
+
   // Filter modal states
   const [showBPMFilter, setShowBPMFilter] = useState(false);
   const [showGenreFilter, setShowGenreFilter] = useState(false);
   const [showKeyFilter, setShowKeyFilter] = useState(false);
   const [showAudioFeaturesFilter, setShowAudioFeaturesFilter] = useState(false);
   const [showSortFilter, setShowSortFilter] = useState(false);
-  
+
   // Folder management state
   const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
   const [hoveredTrackId, setHoveredTrackId] = useState<string | null>(null);
@@ -218,18 +221,6 @@ const HomePage: React.FC = () => {
     audioFeatures.energy || audioFeatures.danceability || audioFeatures.valence ? 'features' : null
   ].filter(Boolean).length;
 
-  const handleTrackPlay = (track: Track) => {
-    playTrack({
-      id: track.id,
-      name: track.name,
-      artist: track.artist,
-      album: track.album,
-      audioFile: track.audioFile,
-      artwork: track.artwork,
-      duration: track.duration
-    });
-  };
-
   const handleTracksAdded = (newTracks: any[]) => {
     // Convert and add new tracks to the tracks array
     const convertedTracks: Track[] = newTracks.map((track, index) => ({
@@ -278,6 +269,24 @@ const HomePage: React.FC = () => {
         <div className={`absolute inset-0 bg-black/50 flex items-center justify-center transition-opacity duration-300 ${
           hoveredTrackId === track.id ? 'opacity-100' : 'opacity-0'
         }`}>
+          <button
+            onClick={() => playTrack({
+              id: track.id,
+              name: track.name,
+              artist: track.artist,
+              album: track.album,
+              audioFile: track.audioFile,
+              artwork: track.artwork,
+              duration: track.duration
+            })}
+            className="w-16 h-16 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 shadow-xl"
+          >
+            {currentTrack?.id === track.id && isPlaying ? (
+              <Pause className="w-7 h-7 text-gray-900" />
+            ) : (
+              <Play className="w-7 h-7 text-gray-900 ml-1" />
+            )}
+          </button>
         </div>
 
         {/* Track Info Overlay (bottom) */}
@@ -414,11 +423,22 @@ const HomePage: React.FC = () => {
             hoveredTrackId === track.id ? 'opacity-100' : 'opacity-0'
           }`}>
             <button
-              className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95"
+              onClick={() => playTrack({
+                id: track.id,
+                name: track.name,
+                artist: track.artist,
+                album: track.album,
+                audioFile: track.audioFile,
+                artwork: track.artwork,
+                duration: track.duration
+              })}
+              className="w-8 h-8 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95"
             >
-              <svg className="w-3 h-3 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
+              {currentTrack?.id === track.id && isPlaying ? (
+                <Pause className="w-3 h-3 text-gray-900" />
+              ) : (
+                <Play className="w-3 h-3 text-gray-900 ml-0.5" />
+              )}
             </button>
           </div>
         </div>
