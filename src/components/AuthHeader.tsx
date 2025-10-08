@@ -107,7 +107,7 @@ const AuthHeader: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <div className="hidden sm:block">
-                  <h1 className="text-xl font-bold text-white">welcome...</h1>
+                  <h1 className="text-xl font-bold text-white">Welcome...</h1>
                   <p className="text-xs text-gray-400">Neurotune – From waveform to wonder.</p>
                 </div>
               </div>
@@ -135,7 +135,7 @@ const AuthHeader: React.FC = () => {
               <div className="ml-2 pl-6 border-l border-gray-600">
                 <button
                   onClick={() => handleProviderClick('Email')}
-                  className="flex items-center px-6 py-3 bg-gradient-to-r from-gold-500 to-burnt-orange-600 text-white rounded-xl hover:from-gold-600 hover:to-burnt-orange-700 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 font-medium shadow-lg hover:shadow-gold-500/30 animate-pulse-gold"
+                  className="flex items-center px-3 py-1.5 bg-gradient-to-r from-gold-500 to-burnt-orange-600 text-white rounded-xl hover:from-gold-600 hover:to-burnt-orange-700 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 font-medium shadow-lg hover:shadow-gold-500/30 animate-pulse-gold"
                 >
                   <User className="w-4 h-4 mr-2" />
                   <span className="hidden sm:inline">Sign In</span>
