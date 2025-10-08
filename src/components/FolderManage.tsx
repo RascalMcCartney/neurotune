@@ -346,7 +346,7 @@ const FolderManage: React.FC<FolderManageProps> = ({
           className={`relative group rounded-lg transition-all duration-200 ${
             isSelected
               ? 'bg-gradient-to-r from-deep-blue-600 via-ocean-blue-700 to-deep-blue-800 border-2 border-gold-400/50 shadow-lg'
-              : 'hover:bg-white/50 border-2 border-transparent'
+              : 'hover:bg-gray-700 border-2 border-transparent'
           }`}
           style={{ marginLeft: `${level * 16}px` }}
         >
@@ -363,7 +363,7 @@ const FolderManage: React.FC<FolderManageProps> = ({
                 value={editingName}
                 onChange={(e) => setEditingName(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleRenameFolder(folder.id)}
-                className="flex-1 bg-transparent outline-none font-medium text-gray-800 border-b border-gray-400 focus:border-ocean-blue-500"
+                className="flex-1 bg-transparent outline-none font-medium text-white border-b border-gray-500 focus:border-blue-500"
                 autoFocus
               />
               <div className="flex items-center space-x-1 ml-2">
@@ -395,12 +395,12 @@ const FolderManage: React.FC<FolderManageProps> = ({
                         e.stopPropagation();
                         handleToggleFolder(folder.id);
                       }}
-                      className="p-1 hover:bg-blue-200/50 rounded mr-1 transition-colors duration-200"
+                      className="p-1 hover:bg-gray-600 rounded mr-1 transition-colors duration-200"
                     >
                       {isExpanded ? (
-                        <ChevronDown className="w-3 h-3 text-gray-600" />
+                        <ChevronDown className="w-3 h-3 text-gray-400" />
                       ) : (
-                        <ChevronRight className="w-3 h-3 text-gray-600" />
+                        <ChevronRight className="w-3 h-3 text-gray-400" />
                       )}
                     </button>
                   )}
@@ -408,14 +408,14 @@ const FolderManage: React.FC<FolderManageProps> = ({
                 </div>
                 <div className="flex-1">
                   <p className={`font-medium ${
-                    isSelected ? 'text-white' : 'text-gray-800'
+                    isSelected ? 'text-white' : 'text-white'
                   }`}>{folder.name}</p>
                   <p className={`text-sm ${
-                    isSelected ? 'text-blue-200' : 'text-gray-600'
+                    isSelected ? 'text-blue-200' : 'text-gray-400'
                   }`}>{folder.track_count} tracks</p>
                 </div>
                 <Music className={`w-4 h-4 ${
-                  isSelected ? 'text-gold-400' : 'text-gray-500 group-hover:text-ocean-blue-600'
+                  isSelected ? 'text-gold-400' : 'text-gray-500 group-hover:text-gray-300'
                 }`} />
               </button>
             </div>
@@ -450,19 +450,19 @@ const FolderManage: React.FC<FolderManageProps> = ({
 
   return (
     <>
-      <div className="bg-gradient-to-br from-blue-50 via-sky-50 to-blue-100 rounded-2xl shadow-lg border border-blue-200/50 h-full flex flex-col">
+      <div className="bg-gray-800 rounded-2xl shadow-lg border border-gray-700 h-full flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-blue-200/50">
+      <div className="p-6 border-b border-gray-700">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
-            <Folder className="w-6 h-6 text-ocean-blue-600 mr-3" />
-            <h2 className="text-xl font-semibold text-gray-800">Folders</h2>
+            <Folder className="w-6 h-6 text-blue-400 mr-3" />
+            <h2 className="text-xl font-semibold text-white">Folders</h2>
           </div>
           <div className="flex items-center space-x-2">
             {selectedTracks.size > 0 && (
               <button
                 onClick={() => setSelectedTracks(new Set())}
-                className="p-2 text-gray-600 hover:text-ocean-blue-700 hover:bg-blue-200/50 rounded-lg transition-colors duration-200"
+                className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-colors duration-200"
                 title="Clear selection"
               >
                 <RotateCcw className="w-4 h-4" />
@@ -472,8 +472,8 @@ const FolderManage: React.FC<FolderManageProps> = ({
               onClick={() => setShowTrackSelection(!showTrackSelection)}
               className={`p-2 rounded-lg transition-colors duration-200 ${
                 showTrackSelection
-                  ? 'bg-ocean-blue-600 text-white'
-                  : 'text-gray-600 hover:text-ocean-blue-700 hover:bg-blue-200/50'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
               }`}
               title="Toggle track selection mode"
             >
@@ -483,8 +483,8 @@ const FolderManage: React.FC<FolderManageProps> = ({
               onClick={() => setIsCreating(true)}
               className={`p-2 rounded-lg transition-colors duration-200 ${
                 isCreating
-                  ? 'bg-ocean-blue-600 text-white'
-                  : 'text-gray-600 hover:text-ocean-blue-700 hover:bg-blue-200/50'
+                  ? 'bg-blue-600 text-white'
+                  : 'text-gray-400 hover:text-white hover:bg-gray-700'
               }`}
               title="Create new folder"
             >
@@ -495,13 +495,13 @@ const FolderManage: React.FC<FolderManageProps> = ({
 
         {/* Search */}
         <div className="relative">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <input
             type="text"
             placeholder="Search folders..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-white/50 border border-blue-300 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-ocean-blue-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
       </div>
@@ -515,20 +515,20 @@ const FolderManage: React.FC<FolderManageProps> = ({
             className={`w-full flex items-center p-3 rounded-lg transition-all duration-200 group ${
               selectedFolderId === null
                 ? 'bg-gradient-to-r from-deep-blue-600 via-ocean-blue-700 to-deep-blue-800 border-2 border-gold-400/50 shadow-lg'
-                : 'hover:bg-white/50 border-2 border-transparent'
+                : 'hover:bg-gray-700 border-2 border-transparent'
             }`}
           >
             <div className="w-3 h-3 bg-gradient-to-br from-gray-400 to-gray-600 rounded mr-3"></div>
             <div className="flex-1 text-left">
               <p className={`font-medium ${
-                selectedFolderId === null ? 'text-white' : 'text-gray-800'
+                selectedFolderId === null ? 'text-white' : 'text-white'
               }`}>All Tracks</p>
               <p className={`text-sm ${
-                selectedFolderId === null ? 'text-blue-200' : 'text-gray-600'
+                selectedFolderId === null ? 'text-blue-200' : 'text-gray-400'
               }`}>{tracks.length} tracks</p>
             </div>
             <Music className={`w-4 h-4 ${
-              selectedFolderId === null ? 'text-gold-400' : 'text-gray-500 group-hover:text-ocean-blue-600'
+              selectedFolderId === null ? 'text-gold-400' : 'text-gray-500 group-hover:text-gray-300'
             }`} />
           </button>
         </div>
@@ -536,15 +536,15 @@ const FolderManage: React.FC<FolderManageProps> = ({
         {/* Create New Folder Form */}
         {isCreating && (
           <div className="px-4 pb-4">
-            <div className="flex items-center p-3 bg-white/70 rounded-lg border-2 border-ocean-blue-500">
-              <div className="w-3 h-3 bg-ocean-blue-500 rounded mr-3"></div>
+            <div className="flex items-center p-3 bg-gray-700 rounded-lg border-2 border-blue-600">
+              <div className="w-3 h-3 bg-blue-500 rounded mr-3"></div>
               <input
                 type="text"
                 placeholder="Folder name..."
                 value={newFolderName}
                 onChange={(e) => setNewFolderName(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleCreateFolder()}
-                className="flex-1 bg-transparent outline-none font-medium text-gray-800 placeholder-gray-500"
+                className="flex-1 bg-transparent outline-none font-medium text-white placeholder-gray-400"
                 autoFocus
                 onBlur={() => {
                   if (!newFolderName.trim()) {
@@ -581,17 +581,17 @@ const FolderManage: React.FC<FolderManageProps> = ({
         {filteredFolders.length === 0 && searchTerm && (
           <div className="px-4 py-8 text-center">
             <Folder className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-            <p className="text-gray-600">No folders found matching "{searchTerm}"</p>
+            <p className="text-gray-400">No folders found matching "{searchTerm}"</p>
           </div>
         )}
       </div>
 
       {/* Track List for Selected Folder */}
       {showTrackSelection && currentFolderTracks.length > 0 && (
-        <div className="border-t border-blue-200/50 bg-white/30">
+        <div className="border-t border-gray-700 bg-gray-900">
           <div className="p-4">
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-medium text-gray-800">
+              <h3 className="text-sm font-medium text-white">
                 Tracks in {selectedFolderId ? folders.find(f => f.id === selectedFolderId)?.name : 'Root'}
               </h3>
               <button
@@ -605,7 +605,7 @@ const FolderManage: React.FC<FolderManageProps> = ({
               {currentFolderTracks.map(track => (
                 <div
                   key={track.id}
-                  className="flex items-center p-2 hover:bg-white/50 rounded-lg cursor-pointer"
+                  className="flex items-center p-2 hover:bg-gray-800 rounded-lg cursor-pointer"
                   onClick={() => handleTrackSelect(track.id, !selectedTracks.has(track.id))}
                   onContextMenu={(e) => handleTrackContextMenu(e, [track])}
                 >
@@ -619,14 +619,14 @@ const FolderManage: React.FC<FolderManageProps> = ({
                     {selectedTracks.has(track.id) ? (
                       <CheckSquare className="w-4 h-4 text-blue-400" />
                     ) : (
-                      <Square className="w-4 h-4 text-gray-600" />
+                      <Square className="w-4 h-4 text-gray-400" />
                     )}
                   </button>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-800 truncate">{track.name}</p>
-                    <p className="text-xs text-gray-600 truncate">{track.artist}</p>
+                    <p className="text-sm text-white truncate">{track.name}</p>
+                    <p className="text-xs text-gray-400 truncate">{track.artist}</p>
                   </div>
-                  <p className="text-xs text-gray-600">{track.duration}</p>
+                  <p className="text-xs text-gray-500">{track.duration}</p>
                 </div>
               ))}
             </div>
@@ -635,8 +635,8 @@ const FolderManage: React.FC<FolderManageProps> = ({
       )}
 
       {/* Footer Stats */}
-      <div className="p-4 border-t border-blue-200/50 bg-white/30">
-        <div className="flex items-center justify-between text-sm text-gray-600">
+      <div className="p-4 border-t border-gray-700 bg-gray-900">
+        <div className="flex items-center justify-between text-sm text-gray-400">
           <span>{folders.length} folders</span>
           <div className="flex items-center space-x-4">
             {selectedTracks.size > 0 && (
