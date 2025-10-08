@@ -496,8 +496,11 @@ const HomePage: React.FC = () => {
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h1 className="text-3xl font-bold text-white mb-2">Music Library</h1>
-                  <p className="text-gray-700">
+                  <h1 className="text-3xl font-bold text-white mb-2">Discover Your Sound</h1>
+                  <p className="text-gray-750">
+                    Explore, analyse, and organise your music collection with powerful tools and insights
+                  </p>
+                  <p className="text-gray-600">
                     {filteredTracks.length} track{filteredTracks.length !== 1 ? 's' : ''} 
                     {activeFilterCount > 0 && ` • ${activeFilterCount} filter${activeFilterCount !== 1 ? 's' : ''} active`}
                   </p>
