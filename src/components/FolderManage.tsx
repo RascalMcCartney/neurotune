@@ -345,7 +345,7 @@ const FolderManage: React.FC<FolderManageProps> = ({
         <div
           className={`relative group rounded-lg transition-all duration-200 ${
             isSelected
-              ? 'bg-ocean-blue-200 border-2 border-ocean-blue-500'
+              ? 'bg-gradient-to-r from-deep-blue-600 via-ocean-blue-700 to-deep-blue-800 border-2 border-gold-400/50 shadow-lg'
               : 'hover:bg-white/50 border-2 border-transparent'
           }`}
           style={{ marginLeft: `${level * 16}px` }}
@@ -407,10 +407,16 @@ const FolderManage: React.FC<FolderManageProps> = ({
                   <div className={`w-3 h-3 ${folder.color} rounded`}></div>
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-gray-800">{folder.name}</p>
-                  <p className="text-sm text-gray-600">{folder.track_count} tracks</p>
+                  <p className={`font-medium ${
+                    isSelected ? 'text-white' : 'text-gray-800'
+                  }`}>{folder.name}</p>
+                  <p className={`text-sm ${
+                    isSelected ? 'text-blue-200' : 'text-gray-600'
+                  }`}>{folder.track_count} tracks</p>
                 </div>
-                <Music className="w-4 h-4 text-gray-500 group-hover:text-ocean-blue-600" />
+                <Music className={`w-4 h-4 ${
+                  isSelected ? 'text-gold-400' : 'text-gray-500 group-hover:text-ocean-blue-600'
+                }`} />
               </button>
             </div>
           )}
@@ -507,17 +513,23 @@ const FolderManage: React.FC<FolderManageProps> = ({
           <button
             onClick={() => onFolderSelect?.(null)}
             className={`w-full flex items-center p-3 rounded-lg transition-all duration-200 group ${
-              selectedFolderId === null 
-                ? 'bg-ocean-blue-200 border-2 border-ocean-blue-500'
+              selectedFolderId === null
+                ? 'bg-gradient-to-r from-deep-blue-600 via-ocean-blue-700 to-deep-blue-800 border-2 border-gold-400/50 shadow-lg'
                 : 'hover:bg-white/50 border-2 border-transparent'
             }`}
           >
             <div className="w-3 h-3 bg-gradient-to-br from-gray-400 to-gray-600 rounded mr-3"></div>
             <div className="flex-1 text-left">
-              <p className="font-medium text-gray-800">All Tracks</p>
-              <p className="text-sm text-gray-600">{tracks.length} tracks</p>
+              <p className={`font-medium ${
+                selectedFolderId === null ? 'text-white' : 'text-gray-800'
+              }`}>All Tracks</p>
+              <p className={`text-sm ${
+                selectedFolderId === null ? 'text-blue-200' : 'text-gray-600'
+              }`}>{tracks.length} tracks</p>
             </div>
-            <Music className="w-4 h-4 text-gray-500 group-hover:text-ocean-blue-600" />
+            <Music className={`w-4 h-4 ${
+              selectedFolderId === null ? 'text-gold-400' : 'text-gray-500 group-hover:text-ocean-blue-600'
+            }`} />
           </button>
         </div>
 
