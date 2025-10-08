@@ -264,7 +264,14 @@ const HomePage: React.FC = () => {
             <Music className="w-16 h-16 text-gray-400" />
           </div>
         )}
-        
+
+        {/* Musical Key Badge */}
+        {track.key && (
+          <div className="absolute top-3 left-3 bg-white px-3 py-1.5 rounded-lg shadow-lg">
+            <span className="text-black font-semibold text-sm">{track.key}</span>
+          </div>
+        )}
+
         {/* Play Button Overlay */}
         <div className={`absolute inset-0 bg-black/50 flex items-center justify-center transition-opacity duration-300 ${
           hoveredTrackId === track.id ? 'opacity-100' : 'opacity-0'
