@@ -279,12 +279,12 @@ const HomePage: React.FC = () => {
               artwork: track.artwork,
               duration: track.duration
             })}
-            className="w-16 h-16 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 shadow-xl"
+            className="w-16 h-16 bg-gradient-to-br from-gold-400 to-burnt-orange-500 hover:from-gold-500 hover:to-burnt-orange-600 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 shadow-xl"
           >
             {currentTrack?.id === track.id && isPlaying ? (
-              <Pause className="w-7 h-7 text-gray-900" />
+              <Pause className="w-7 h-7 text-white" />
             ) : (
-              <Play className="w-7 h-7 text-gray-900 ml-1" />
+              <Play className="w-7 h-7 text-white ml-1" />
             )}
           </button>
         </div>
@@ -295,7 +295,7 @@ const HomePage: React.FC = () => {
             <div className="text-white">
               {track.energy && (
                 <div className="flex items-center space-x-1 text-xs">
-                  <Zap className="w-3 h-3 text-yellow-400" />
+                  <Zap className="w-3 h-3 text-gold-400" />
                   <span>{track.energy}%</span>
                 </div>
               )}
@@ -318,7 +318,7 @@ const HomePage: React.FC = () => {
       {/* Track Details */}
       <div className="p-4 space-y-3">
         <div>
-          <h3 className="text-lg font-semibold text-white truncate group-hover:text-blue-300 transition-colors duration-200">
+          <h3 className="text-lg font-semibold text-white truncate group-hover:text-gold-300 transition-colors duration-200">
             {track.name}
           </h3>
           <p className="text-gray-400 text-sm truncate">{track.artist}</p>
@@ -354,12 +354,12 @@ const HomePage: React.FC = () => {
               {track.energy !== undefined && (
                 <div>
                   <div className="flex justify-between items-center">
-                    <span className="text-yellow-400">Energy</span>
+                    <span className="text-gold-400">Energy</span>
                     <span className="text-white">{track.energy}%</span>
                   </div>
                   <div className="w-full bg-gray-700 rounded-full h-1">
-                    <div 
-                      className="bg-yellow-500 h-1 rounded-full transition-all duration-500"
+                    <div
+                      className="bg-gold-500 h-1 rounded-full transition-all duration-500"
                       style={{ width: `${track.energy}%` }}
                     />
                   </div>
@@ -368,12 +368,12 @@ const HomePage: React.FC = () => {
               {track.danceability !== undefined && (
                 <div>
                   <div className="flex justify-between items-center">
-                    <span className="text-purple-400">Dance</span>
+                    <span className="text-ocean-blue-400">Dance</span>
                     <span className="text-white">{track.danceability}%</span>
                   </div>
                   <div className="w-full bg-gray-700 rounded-full h-1">
-                    <div 
-                      className="bg-purple-500 h-1 rounded-full transition-all duration-500"
+                    <div
+                      className="bg-ocean-blue-500 h-1 rounded-full transition-all duration-500"
                       style={{ width: `${track.danceability}%` }}
                     />
                   </div>
@@ -382,12 +382,12 @@ const HomePage: React.FC = () => {
               {track.valence !== undefined && (
                 <div>
                   <div className="flex justify-between items-center">
-                    <span className="text-pink-400">Happy</span>
+                    <span className="text-burnt-orange-400">Happy</span>
                     <span className="text-white">{track.valence}%</span>
                   </div>
                   <div className="w-full bg-gray-700 rounded-full h-1">
-                    <div 
-                      className="bg-pink-500 h-1 rounded-full transition-all duration-500"
+                    <div
+                      className="bg-burnt-orange-500 h-1 rounded-full transition-all duration-500"
                       style={{ width: `${track.valence}%` }}
                     />
                   </div>
@@ -432,12 +432,12 @@ const HomePage: React.FC = () => {
                 artwork: track.artwork,
                 duration: track.duration
               })}
-              className="w-8 h-8 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95"
+              className="w-8 h-8 bg-gradient-to-br from-gold-400 to-burnt-orange-500 hover:from-gold-500 hover:to-burnt-orange-600 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95"
             >
               {currentTrack?.id === track.id && isPlaying ? (
-                <Pause className="w-3 h-3 text-gray-900" />
+                <Pause className="w-3 h-3 text-white" />
               ) : (
-                <Play className="w-3 h-3 text-gray-900 ml-0.5" />
+                <Play className="w-3 h-3 text-white ml-0.5" />
               )}
             </button>
           </div>
@@ -445,7 +445,7 @@ const HomePage: React.FC = () => {
 
         {/* Track Info */}
         <div className="flex-1 min-w-0">
-          <h3 className="text-white font-medium truncate group-hover:text-blue-300 transition-colors duration-200">
+          <h3 className="text-white font-medium truncate group-hover:text-gold-300 transition-colors duration-200">
             {track.name}
           </h3>
           <p className="text-gray-400 text-sm truncate">{track.artist}</p>
@@ -474,7 +474,7 @@ const HomePage: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-deep-blue-950 via-gray-900 to-deep-blue-900">
       <AuthHeader />
       
       <div className="flex">
@@ -515,7 +515,7 @@ const HomePage: React.FC = () => {
                     placeholder="Search tracks, artists, albums..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                    className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-ocean-blue-500 focus:border-transparent transition-colors duration-200"
                   />
                 </div>
 
@@ -525,7 +525,7 @@ const HomePage: React.FC = () => {
                     onClick={() => setShowGenreFilter(true)}
                     className={`px-4 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2 ${
                       selectedGenre !== 'All Genres'
-                        ? 'bg-orange-600 text-white' 
+                        ? 'bg-burnt-orange-600 text-white hover:bg-burnt-orange-700'
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                     }`}
                   >
@@ -537,7 +537,7 @@ const HomePage: React.FC = () => {
                     onClick={() => setShowBPMFilter(true)}
                     className={`px-4 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2 ${
                       bpmRange.min !== null || bpmRange.max !== null
-                        ? 'bg-green-600 text-white' 
+                        ? 'bg-ocean-blue-600 text-white hover:bg-ocean-blue-700'
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                     }`}
                   >
@@ -549,7 +549,7 @@ const HomePage: React.FC = () => {
                     onClick={() => setShowKeyFilter(true)}
                     className={`px-4 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2 ${
                       selectedKey
-                        ? 'bg-purple-600 text-white' 
+                        ? 'bg-deep-blue-600 text-white hover:bg-deep-blue-700'
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                     }`}
                   >
@@ -561,7 +561,7 @@ const HomePage: React.FC = () => {
                     onClick={() => setShowAudioFeaturesFilter(true)}
                     className={`px-4 py-2 rounded-lg transition-colors duration-200 flex items-center space-x-2 ${
                       audioFeatures.energy || audioFeatures.danceability || audioFeatures.valence
-                        ? 'bg-yellow-600 text-white' 
+                        ? 'bg-gold-600 text-white hover:bg-gold-700'
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                     }`}
                   >
@@ -585,7 +585,7 @@ const HomePage: React.FC = () => {
                   <button
                     onClick={() => setViewMode('grid')}
                     className={`p-2 rounded transition-colors duration-200 ${
-                      viewMode === 'grid' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
+                      viewMode === 'grid' ? 'bg-ocean-blue-600 text-white' : 'text-gray-400 hover:text-white'
                     }`}
                   >
                     <Grid3X3 className="w-4 h-4" />
@@ -593,7 +593,7 @@ const HomePage: React.FC = () => {
                   <button
                     onClick={() => setViewMode('list')}
                     className={`p-2 rounded transition-colors duration-200 ${
-                      viewMode === 'list' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
+                      viewMode === 'list' ? 'bg-ocean-blue-600 text-white' : 'text-gray-400 hover:text-white'
                     }`}
                   >
                     <List className="w-4 h-4" />

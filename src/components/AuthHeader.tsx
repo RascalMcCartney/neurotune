@@ -90,14 +90,14 @@ const AuthHeader: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-gray-900 border-b border-gray-700 shadow-lg">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-deep-blue-900 via-gray-900 to-deep-blue-900 border-b border-gold-600/30 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-left h-16">
             {/* Left Side - Burger Menu + Logo */}
             <div className="flex items-left space-x-4">
               <button
                 onClick={() => setShowSlideout(true)}
-                className="p-2 text-gray-400 hover:text-white hover:bg-gray-700 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                className="p-2 text-gray-400 hover:text-gold-400 hover:bg-gray-700 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -121,7 +121,7 @@ const AuthHeader: React.FC = () => {
                   <button
                     key={provider.name}
                     onClick={() => handleProviderClick(provider.name)}
-                    className="flex items-center justify-center w-11 h-11 bg-gray-800 border border-gray-600 rounded-xl transition-all duration-200 hover:border-gray-500 hover:bg-gray-700 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900"
+                    className="flex items-center justify-center w-11 h-11 bg-gray-800 border border-gray-600 rounded-xl transition-all duration-200 hover:border-gold-500 hover:bg-gray-700 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-ocean-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
                     title={`Sign in with ${provider.name}`}
                   >
                     <div className="text-white">
@@ -135,7 +135,7 @@ const AuthHeader: React.FC = () => {
               <div className="ml-2 pl-6 border-l border-gray-600">
                 <button
                   onClick={() => handleProviderClick('Email')}
-                  className="flex items-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-xl hover:from-yellow-600 hover:to-amber-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 font-medium shadow-lg hover:shadow-yellow-500/30 animate-pulse-gold"
+                  className="flex items-center px-6 py-3 bg-gradient-to-r from-gold-500 to-burnt-orange-600 text-white rounded-xl hover:from-gold-600 hover:to-burnt-orange-700 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all duration-200 font-medium shadow-lg hover:shadow-gold-500/30 animate-pulse-gold"
                 >
                   <User className="w-4 h-4 mr-2" />
                   <span className="hidden sm:inline">Sign In</span>

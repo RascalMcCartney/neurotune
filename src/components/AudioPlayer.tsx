@@ -55,7 +55,7 @@ const AudioPlayer: React.FC = () => {
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-800 shadow-2xl z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-deep-blue-900 via-gray-900 to-deep-blue-900 border-t border-gold-600/30 shadow-2xl z-50">
       <div className="px-6 py-4">
         <div className="flex items-center justify-between gap-6">
           {/* Track Info */}
@@ -84,25 +84,25 @@ const AudioPlayer: React.FC = () => {
             <div className="flex items-center space-x-4">
               <button
                 onClick={skipBackward}
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                className="text-gray-400 hover:text-gold-400 transition-colors duration-200"
               >
                 <SkipBack className="w-5 h-5" />
               </button>
 
               <button
                 onClick={togglePlayPause}
-                className="w-10 h-10 bg-white hover:bg-gray-100 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95"
+                className="w-10 h-10 bg-gradient-to-br from-gold-400 to-burnt-orange-500 hover:from-gold-500 hover:to-burnt-orange-600 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 shadow-lg"
               >
                 {isPlaying ? (
-                  <Pause className="w-5 h-5 text-gray-900" />
+                  <Pause className="w-5 h-5 text-white" />
                 ) : (
-                  <Play className="w-5 h-5 text-gray-900 ml-0.5" />
+                  <Play className="w-5 h-5 text-white ml-0.5" />
                 )}
               </button>
 
               <button
                 onClick={skipForward}
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                className="text-gray-400 hover:text-gold-400 transition-colors duration-200"
               >
                 <SkipForward className="w-5 h-5" />
               </button>
@@ -122,7 +122,7 @@ const AudioPlayer: React.FC = () => {
                   onChange={handleSeek}
                   className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer slider"
                   style={{
-                    background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${progress}%, #374151 ${progress}%, #374151 100%)`
+                    background: `linear-gradient(to right, #f59e0b 0%, #f59e0b ${progress}%, #374151 ${progress}%, #374151 100%)`
                   }}
                 />
               </div>
@@ -136,7 +136,7 @@ const AudioPlayer: React.FC = () => {
           <div className="flex items-center space-x-3 flex-1 justify-end">
             <button
               onClick={toggleMute}
-              className="text-gray-400 hover:text-white transition-colors duration-200"
+              className="text-gray-400 hover:text-gold-400 transition-colors duration-200"
             >
               {isMuted || volume === 0 ? (
                 <VolumeX className="w-5 h-5" />
@@ -166,7 +166,7 @@ const AudioPlayer: React.FC = () => {
           width: 12px;
           height: 12px;
           border-radius: 50%;
-          background: #ffffff;
+          background: #f59e0b;
           cursor: pointer;
           transition: all 0.15s ease-in-out;
         }
@@ -179,7 +179,7 @@ const AudioPlayer: React.FC = () => {
           width: 12px;
           height: 12px;
           border-radius: 50%;
-          background: #ffffff;
+          background: #f59e0b;
           cursor: pointer;
           border: none;
           transition: all 0.15s ease-in-out;
