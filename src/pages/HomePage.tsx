@@ -668,7 +668,7 @@ const HomePage: React.FC = () => {
         currentSortCriteria={sortCriteria}
       />
 
-      <Footer style="margin-top: 3px;"/>
+      <Footer />
     </div>
   );
 };
