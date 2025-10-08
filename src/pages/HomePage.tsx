@@ -278,10 +278,6 @@ const HomePage: React.FC = () => {
         <div className={`absolute inset-0 bg-black/50 flex items-center justify-center transition-opacity duration-300 ${
           hoveredTrackId === track.id ? 'opacity-100' : 'opacity-0'
         }`}>
-          <PlayButton 
-            onClick={() => handleTrackPlay(track)}
-            className="transform hover:scale-110 transition-transform duration-200"
-          />
         </div>
 
         {/* Track Info Overlay (bottom) */}
