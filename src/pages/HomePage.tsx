@@ -414,7 +414,6 @@ const HomePage: React.FC = () => {
             hoveredTrackId === track.id ? 'opacity-100' : 'opacity-0'
           }`}>
             <button
-              onClick={() => handleTrackPlay(track)}
               className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95"
             >
               <svg className="w-3 h-3 text-white ml-0.5" viewBox="0 0 24 24" fill="currentColor">
@@ -611,15 +610,6 @@ const HomePage: React.FC = () => {
           </main>
         </div>
       </div>
-
-      {/* Audio Player */}
-      <AudioPlayer
-        track={currentTrack}
-        isVisible={isPlayerVisible}
-        onClose={closePlayer}
-        onNext={nextTrack}
-        onPrevious={previousTrack}
-      />
 
       {/* Filter Modals */}
       <BPMFilter
