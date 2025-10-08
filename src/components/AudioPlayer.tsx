@@ -57,7 +57,7 @@ const AudioPlayer: React.FC = () => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-deep-blue-900 via-gray-900 to-deep-blue-900 border-t border-gold-600/30 shadow-2xl z-50">
-      <div className="px-6 py-4">
+      <div className="px-4 py-4">
         <div className="flex items-center justify-between gap-6 relative">
           {/* Close Button */}
           <button
