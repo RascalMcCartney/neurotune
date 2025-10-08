@@ -62,7 +62,7 @@ const AudioPlayer: React.FC = () => {
           {/* Close Button */}
           <button
             onClick={stopPlayback}
-            className="absolute -top-2 left-0 w-8 h-8 bg-gray-800 hover:bg-gray-700 text-gray-400 hover:text-white rounded-full flex items-center justify-center transition-all duration-200 border border-gray-700 hover:border-gold-500 shadow-lg"
+            className="absolute -top-2 left-0 w-8 h-8 bg-gray-600 hover:bg-gray-800 text-gray-400 hover:text-white rounded-full flex items-center justify-center transition-all duration-200 border border-gray-700 hover:border-gold-500 shadow-lg"
             aria-label="Close player"
           >
             <X className="w-4 h-4" />
