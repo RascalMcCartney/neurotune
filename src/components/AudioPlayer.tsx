@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Play, Pause, SkipForward, SkipBack, Volume2, VolumeX, Music, X } from 'lucide-react';
 import { useAudio } from '../contexts/AudioContext';
+import Waveform from './Waveform';
 
 const AudioPlayer: React.FC = () => {
   const {
@@ -118,22 +119,17 @@ const AudioPlayer: React.FC = () => {
               </button>
             </div>
 
-            {/* Progress Bar */}
+            {/* Waveform */}
             <div className="w-full flex items-center space-x-2">
               <span className="text-xs text-gray-400 w-10 text-right">
                 {formatTime(currentTime)}
               </span>
-              <div className="flex-1 relative">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  className="w-full h-1 bg-gray-700 rounded-full appearance-none cursor-pointer slider"
-                  style={{
-                    background: `linear-gradient(to right, #f59e0b 0%, #f59e0b ${progress}%, #374151 ${progress}%, #374151 100%)`
-                  }}
+              <div className="flex-1">
+                <Waveform
+                  audioUrl={currentTrack.audioFile}
+                  currentTime={currentTime}
+                  duration={duration}
+                  onSeek={seek}
                 />
               </div>
               <span className="text-xs text-gray-400 w-10">
