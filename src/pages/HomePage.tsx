@@ -10,7 +10,6 @@ import MusicalKeyboard from '../components/MusicalKeyboard';
 import AudioFeaturesFilter from '../components/AudioFeaturesFilter';
 import SortFilter from '../components/SortFilter';
 import StorageStatus from '../components/StorageStatus';
-import PlayButton from '../components/PlayButton';
 import AudioPlayer from '../components/AudioPlayer';
 import { useAudioPlayer } from '../hooks/useAudioPlayer';
 import type { Track, Folder, AudioFeaturesFilters } from '../types/folder';
