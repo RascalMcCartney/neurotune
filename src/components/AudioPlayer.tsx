@@ -69,7 +69,7 @@ const AudioPlayer: React.FC = () => {
           </button>
 
           {/* Track Info */}
-          <div className="flex items-center space-x-4 flex-1 min-w-0 pl-8">
+          <div className="flex items-center space-x-4 flex-1 min-w-0 ml-8">
             <div className="w-14 h-14 rounded-lg overflow-hidden bg-gradient-to-br from-gray-600 to-gray-800 flex-shrink-0">
               {currentTrack.artwork ? (
                 <img
