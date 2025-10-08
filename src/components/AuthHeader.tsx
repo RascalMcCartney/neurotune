@@ -91,7 +91,7 @@ const AuthHeader: React.FC = () => {
   return (
     <>
       <header className="sticky top-0 z-50 bg-gradient-to-r from-deep-blue-900 via-gray-900 to-deep-blue-900 border-b border-gold-600/30 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="px-6 lg:px-8">
           <div className="flex justify-between items-left h-16">
             {/* Left Side - Burger Menu + Logo */}
             <div className="flex items-left space-x-4">
