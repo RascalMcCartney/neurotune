@@ -19,9 +19,6 @@ interface SortCriteria {
 }
 
 const HomePage: React.FC = () => {
-  // Audio player state
-  const { currentTrack, isPlayerVisible, playTrack, closePlayer, nextTrack, previousTrack } = useAudioPlayer([]);
-
   // State management
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All Genres');
