@@ -609,8 +609,6 @@ const HomePage: React.FC = () => {
                     <List className="w-4 h-4" />
                   </button>
                 </div>
-
-                <StorageStatus />
               </div>
             </div>
 
@@ -637,6 +635,7 @@ const HomePage: React.FC = () => {
                 </p>
               </div>
             )}
+            <StorageStatus />
           </main>
         </div>
       </div>
