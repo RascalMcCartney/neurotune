@@ -497,7 +497,7 @@ const HomePage: React.FC = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 min-w-0 bg-gradient-to-br from-deep-blue-900/50 via-gray-900/80 to-deep-blue-900/50">
+        <div className="flex-1 min-w-0 bg-gradient-to-tl from-deep-blue-900/50 via-gray-900/80 to-deep-blue-900/50">
           <main className="p-6 pb-32"> {/* Extra bottom padding for audio player */}
             {/* Header */}
             <div className="mb-8">
